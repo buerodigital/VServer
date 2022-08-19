@@ -64,8 +64,20 @@ echo -e "${GRA}=== Done ===${NC}"
 
 
 
+# Installation Landingpage
+clear
+echo -e "${YEL}=== Installing Landingpage "$DOMAIN" ===${NC}"
 
+echo -e "\n${GRA}=== Creating Bind-Volumes Folders ===${NC}"
+mkdir /opt/$DOMAIN/volumes/landing_html
+echo -e "${GRA}=== Done ===${NC}"
 
+echo -e "\n${GRA}=== Creating YAML File for Shell in a Box and starting Container ===${NC}"
+cp ./landing_compose.yml /opt/$DOMAIN/landing_compose.yml
+sed -i -e 's/DOMAIN/'"$DOMAIN"'/g' /opt/$DOMAIN/landing_compose.yml
+sed -i -e 's/LETSENCRYPTEMAIL/'"$LETSENCRYPTEMAIL"'/g' /opt/$DOMAIN/landing_compose.yml
+docker-compose -f /opt/$DOMAIN/landing_compose.yml up -d
+echo -e "${GRA}=== Done ===${NC}"
 
 
 
@@ -76,7 +88,7 @@ echo -e "${YEL}=== Installing Shell in a Box shell."$DOMAIN" ===${NC}"
 echo -e "\n${GRA}=== Creating Bind-Volumes Folders ===${NC}"
 echo -e "${GRA}=== Done ===${NC}"
 
-echo -e "\n${GRA}=== Creating YAML File for Porxy and starting Container ===${NC}"
+echo -e "\n${GRA}=== Creating YAML File for Shell in a Box and starting Container ===${NC}"
 cp ./shell_compose.yml /opt/$DOMAIN/shell_compose.yml
 sed -i -e 's/DOMAIN/'"$DOMAIN"'/g' /opt/$DOMAIN/shell_compose.yml
 sed -i -e 's/SIABUSER/'"$SIABUSER"'/g' /opt/$DOMAIN/shell_compose.yml
