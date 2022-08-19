@@ -20,6 +20,6 @@ echo -e "${GRA}=== Done ===${NC}"
 
 echo -e "\n${GRA}=== Creating YAML File for Proxy and starting Container ===${NC}"
 cp /opt/VServer/00_proxy_compose.yml $WORKFOLDER/00_proxy_compose.yml
-sed -i -e 's/WORKFOLDER/'"$WORKFOLDER"'/g' $WORKFOLDER/00_proxy_compose.yml
+sed -i -e 's/WORKFOLDER/'"$WORKFOLDER"'/g' "$WORKFOLDER/00_proxy_compose.yml"
 docker-compose -f $WORKFOLDER/00_proxy_compose.yml up -d --remove-orphan
 echo -e "${GRA}=== Done ===${NC}"
