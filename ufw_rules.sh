@@ -5,13 +5,13 @@ echo -e "=====\n"
 
 echo "Clearing current rules"
 echo -e "=====\n"
-ufw disable                                                                                                                                                                                                        
+ufw disable
 yes | ufw reset
 
 echo "Adding default Rules"
 echo -e "=====\n"
-ufw default deny incoming                                                                                                                                                                                          
-ufw default allow outgoing                                                                                                                                                                                         
+ufw default deny incoming
+ufw default allow outgoing
 
 echo "Adding External Rules"
 echo -e "=====\n"
@@ -26,7 +26,7 @@ ufw allow 3478/udp comment "COTURN"
 echo "Enabling Firewall"
 echo -e "=====\n"
 yes | ufw enable
-ufw status verbose                                                                                                                                                                                                 
+ufw status verbose
 
 echo "Done"
 echo -e "=====\n"
