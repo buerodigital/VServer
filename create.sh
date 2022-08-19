@@ -44,7 +44,7 @@ mkdir /opt/$DOMAIN/volumes
 clear
 echo -e "${YEL}=== Installing NGINX-Proxy "$DOMAIN" ===${NC}"
 
-echo -e "\n${GRA}=== Creating Bind-Volumes Folders ===${NC}"
+echo -e "\n${GRA}=== Creating Bind-Volume Folders ===${NC}"
 mkdir /opt/$DOMAIN/volumes/proxy_certs
 mkdir /opt/$DOMAIN/volumes/proxy_conf
 mkdir /opt/$DOMAIN/volumes/proxy_vhost
@@ -68,7 +68,7 @@ echo -e "${GRA}=== Done ===${NC}"
 clear
 echo -e "${YEL}=== Installing Landingpage "$DOMAIN" ===${NC}"
 
-echo -e "\n${GRA}=== Creating Bind-Volumes Folders ===${NC}"
+echo -e "\n${GRA}=== Creating Bind-Volume Folders ===${NC}"
 mkdir /opt/$DOMAIN/volumes/landing_html
 echo -e "${GRA}=== Done ===${NC}"
 
@@ -85,7 +85,7 @@ echo -e "${GRA}=== Done ===${NC}"
 clear
 echo -e "${YEL}=== Installing Shell in a Box shell."$DOMAIN" ===${NC}"
 
-echo -e "\n${GRA}=== Creating Bind-Volumes Folders ===${NC}"
+echo -e "\n${GRA}=== Creating Bind-Volume Folders ===${NC}"
 echo -e "${GRA}=== Done ===${NC}"
 
 echo -e "\n${GRA}=== Creating YAML File for Shell in a Box and starting Container ===${NC}"
@@ -97,6 +97,34 @@ sed -i -e 's/LETSENCRYPTEMAIL/'"$LETSENCRYPTEMAIL"'/g' /opt/$DOMAIN/shell_compos
 docker-compose -f /opt/$DOMAIN/shell_compose.yml up -d
 echo -e "${GRA}=== Done ===${NC}"
 
+
+
+# Installation Onlyoffice
+clear
+echo -e "${YEL}=== Installing OnlyOffice office."$DOMAIN" ===${NC}"
+
+echo -e "\n${GRA}=== Creating Bind-Volume Folders ===${NC}"
+mkdir /opt/$DOMAIN/volumes/office_data
+mkdir /opt/$DOMAIN/volumes/office_log
+mkdir /opt/$DOMAIN/volumes/office_cache_files
+mkdir /opt/$DOMAIN/volumes/office_public_files
+mkdir /opt/$DOMAIN/volumes/office_fonts
+mkdir /opt/$DOMAIN/volumes/office_postgresql_data
+echo -e "${GRA}=== Done ===${NC}"
+
+echo -e "\n${GRA}=== Cloning Repository ===${NC}"
+git clone https://github.com/ONLYOFFICE/Docker-DocumentServer /opt/$DOMAIN/
+echo -e "${GRA}=== Done ===${NC}"
+
+
+echo -e "\n${GRA}=== Creating YAML File for Shell in a Box and starting Container ===${NC}"
+cp ./shell_compose.yml /opt/$DOMAIN/shell_compose.yml
+sed -i -e 's/DOMAIN/'"$DOMAIN"'/g' /opt/$DOMAIN/shell_compose.yml
+sed -i -e 's/SIABUSER/'"$SIABUSER"'/g' /opt/$DOMAIN/shell_compose.yml
+sed -i -e 's/SIABPASSWORD/'"$SIABPASSWORD"'/g' /opt/$DOMAIN/shell_compose.yml
+sed -i -e 's/LETSENCRYPTEMAIL/'"$LETSENCRYPTEMAIL"'/g' /opt/$DOMAIN/shell_compose.yml
+docker-compose -f /opt/$DOMAIN/shell_compose.yml up -d
+echo -e "${GRA}=== Done ===${NC}"
 
 
 
