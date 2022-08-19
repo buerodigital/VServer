@@ -65,7 +65,7 @@ echo -e "${GRA}=== Done ===${NC}"
 echo -e "\n${GRA}=== Creating YAML File for Proxy and starting Container ===${NC}"
 cp ./apps_compose.yml /opt/$DOMAIN/apps_compose.yml
 sed -i -e 's/DOMAIN/'"$DOMAIN"'/g' /opt/$DOMAIN/apps_compose.yml
-docker-compose -f /opt/$DOMAIN/apps_compose.yml up -d
+docker-compose -f /opt/$DOMAIN/apps_compose.yml up -d --remove-orphan
 echo -e "${GRA}=== Done ===${NC}"
 
 
@@ -82,7 +82,7 @@ echo -e "\n${GRA}=== Creating YAML File for Shell in a Box and starting Containe
 cp ./landing_compose.yml /opt/$DOMAIN/landing_compose.yml
 sed -i -e 's/DOMAIN/'"$DOMAIN"'/g' /opt/$DOMAIN/landing_compose.yml
 sed -i -e 's/LETSENCRYPTEMAIL/'"$LETSENCRYPTEMAIL"'/g' /opt/$DOMAIN/landing_compose.yml
-docker-compose -f /opt/$DOMAIN/landing_compose.yml up -d
+docker-compose -f /opt/$DOMAIN/landing_compose.yml up -d --remove-orphan
 echo -e "${GRA}=== Done ===${NC}"
 
 
@@ -100,7 +100,7 @@ sed -i -e 's/DOMAIN/'"$DOMAIN"'/g' /opt/$DOMAIN/shell_compose.yml
 sed -i -e 's/SIABUSER/'"$SIABUSER"'/g' /opt/$DOMAIN/shell_compose.yml
 sed -i -e 's/SIABPASSWORD/'"$SIABPASSWORD"'/g' /opt/$DOMAIN/shell_compose.yml
 sed -i -e 's/LETSENCRYPTEMAIL/'"$LETSENCRYPTEMAIL"'/g' /opt/$DOMAIN/shell_compose.yml
-docker-compose -f /opt/$DOMAIN/shell_compose.yml up -d
+docker-compose -f /opt/$DOMAIN/shell_compose.yml up -d --remove-orphan
 echo -e "${GRA}=== Done ===${NC}"
 
 
@@ -130,7 +130,7 @@ sed -i -e 's/LETSENCRYPTEMAIL/'"$LETSENCRYPTEMAIL"'/g' /opt/$DOMAIN/office_compo
 rm /opt/$DOMAIN/Docker-DocumentServer/docker_compose.yml
 mv ./office_compose.yml /opt/$DOMAIN/Docker-DocumentServer/docker_compose.yml
 ln -s office_compose.yml /opt/$DOMAIN/Docker-DocumentServer/docker_compose.yml /opt/$DOMAIN/office_compose.yml
-docker-compose -f /opt/$DOMAIN/office_compose.yml up -d
+docker-compose -f /opt/$DOMAIN/office_compose.yml up -d --remove-orphan
 echo -e "${GRA}=== Done ===${NC}"
 
 
