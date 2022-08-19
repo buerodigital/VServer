@@ -1,0 +1,24 @@
+version: '2'
+                                                                                                                                                                                                                   
+services:
+  shellinabox:
+    container_name: shellinabox
+    image: sspreitzer/shellinabox:latest
+    restart: always
+    expose:
+      - "4200"
+    environment:
+      - SIAB_PASSWORD=SIABPASSWORD
+      - SIAB_USER=SIABUSER
+      - SIAB_SSL=false
+      - VIRTUAL_PORT=4200
+      - VIRTUAL_HOST=shell.DOMAIN
+      - LETSENCRYPT_HOST=shell.DOMAIN
+      - LETSENCRYPT_EMAIL=LETSENCRYPTEMAIL
+    networks:
+      - net_proxy
+                                                                                                                                                                                                                   
+networks:
+  net_proxy:
+    external:
+      name: net_proxy
