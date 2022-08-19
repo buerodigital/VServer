@@ -33,9 +33,7 @@ done
 
 echo -e "${NC}GO!"
 
-docker kill $(docker ps -q)
-docker rm $(docker ps -a -q)
-docker rmi $(docker images -q)
+sudo docker stop $(sudo docker ps -a -q)
 docker system prune -a
 
 rm -R /opt/*ideenrocker.com
