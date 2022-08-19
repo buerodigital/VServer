@@ -38,6 +38,8 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
 docker system prune -a
 
+rm -R /opt/*ideenrocker.com
+
 mkdir /opt/$DOMAIN
 mkdir /opt/$DOMAIN/volumes
 ./ufw_rules.sh
