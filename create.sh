@@ -27,11 +27,11 @@ echo -e "${RED}=== Ggf. mit CTRL + C abbrechen ===${NC}"
 
 COUNT=5
 while [ $COUNT -gt 0 ]; do
-  echo "${NC}$COUNT"
+  echo -e "${NC}$COUNT"
   let COUNT=COUNT-1
 done
 
-echo "${NC}GO!"
+echo -e "${NC}GO!"
 
 docker kill $(docker ps -q)
 docker rm $(docker ps -a -q)
