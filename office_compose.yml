@@ -29,11 +29,11 @@ services:
     restart: always
     stop_grace_period: 60s
     volumes:
-       - "/opt/DOMAIN/volumes/office_data:opt/office.apps.ideenrocker.com/vol_data:/var/www/onlyoffice/Data"
-       - "/opt/DOMAIN/volumes/office_log:/opt/office.apps.ideenrocker.com/vol_log:/var/log/onlyoffice"
-       - "/opt/DOMAIN/volumes/office_cache_files:/opt/office.apps.ideenrocker.com/vol_cache_files:/var/lib/onlyoffice/documentserver/App_Data/cache/files"
-       - "/opt/DOMAIN/volumes/office_public_files:/opt/office.apps.ideenrocker.com/vol_public_files:/var/www/onlyoffice/documentserver-example/public/files"
-       - "/opt/DOMAIN/volumes/office_fonts:/opt/office.apps.ideenrocker.com/vol_fonts:/usr/share/fonts"
+       - "/opt/DOMAIN/volumes/office_data:/var/www/onlyoffice/Data"
+       - "/opt/DOMAIN/volumes/office_log:/var/log/onlyoffice"
+       - "/opt/DOMAIN/volumes/office_cache_files:/var/lib/onlyoffice/documentserver/App_Data/cache/files"
+       - "/opt/DOMAIN/volumes/office_public_files::/var/www/onlyoffice/documentserver-example/public/files"
+       - "/opt/DOMAIN/volumes/office_fonts:/usr/share/fonts"
     networks:
       - net_proxy
       - back_office
