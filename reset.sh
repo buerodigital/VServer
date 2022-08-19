@@ -26,5 +26,5 @@ yes | docker system prune -a
 # Updating Firewall Rules
 clear
 echo -e "${YEL}=== Updating Firewall Rules ===${NC}"
-bash $WORKFOLDER/VServer/ufw_rules.sh
+bash /opt/VServer/ufw_rules.sh
 echo -e "${YEL}=== Done ===${NC}"
