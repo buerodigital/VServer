@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# via 
+# via "git clone https://github.com/buerodigital/VServer" clonen
 
 # Bitte anpassen
 DOMAIN="apps.ideenrocker.com"
