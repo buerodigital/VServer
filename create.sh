@@ -1,10 +1,13 @@
 #!/bin/bash
 
+# via 
+
 # Bitte anpassen
 DOMAIN="apps.ideenrocker.com"
 SIABUSER="guest"
 SIABPASSWORD="xyz"
 LETSENCRYPTEMAIL="info@ideenrocker.com"
+JWTSECRET=caioe
 
 
 # Farbedefinitionen
@@ -112,21 +115,22 @@ mkdir /opt/$DOMAIN/volumes/office_fonts
 mkdir /opt/$DOMAIN/volumes/office_postgresql_data
 echo -e "${GRA}=== Done ===${NC}"
 
-echo -e "\n${GRA}=== Cloning Repository ===${NC}"
+echo -e "\n${GRA}=== Cloning OnlyOffice Repository ===${NC}"
 git clone https://github.com/ONLYOFFICE/Docker-DocumentServer /opt/$DOMAIN/
 echo -e "${GRA}=== Done ===${NC}"
 
-
-echo -e "\n${GRA}=== Creating YAML File for Shell in a Box and starting Container ===${NC}"
-cp ./shell_compose.yml /opt/$DOMAIN/shell_compose.yml
-sed -i -e 's/DOMAIN/'"$DOMAIN"'/g' /opt/$DOMAIN/shell_compose.yml
-sed -i -e 's/SIABUSER/'"$SIABUSER"'/g' /opt/$DOMAIN/shell_compose.yml
-sed -i -e 's/SIABPASSWORD/'"$SIABPASSWORD"'/g' /opt/$DOMAIN/shell_compose.yml
-sed -i -e 's/LETSENCRYPTEMAIL/'"$LETSENCRYPTEMAIL"'/g' /opt/$DOMAIN/shell_compose.yml
-docker-compose -f /opt/$DOMAIN/shell_compose.yml up -d
+echo -e "\n${GRA}=== Creating YAML File for OnlyOffice and starting Container ===${NC}"
+cp ./office_compose.yml /opt/$DOMAIN/office_compose.yml
+sed -i -e 's/DOMAIN/'"$DOMAIN"'/g' /opt/$DOMAIN/office_compose.yml
+sed -i -e 's/JWTSECRET/'"$JWTSECRET"'/g' /opt/$DOMAIN/office_compose.yml
+sed -i -e 's/LETSENCRYPTEMAIL/'"$LETSENCRYPTEMAIL"'/g' /opt/$DOMAIN/office_compose.yml
+rm /opt/$DOMAIN/Docker-DocumentServer/docker_compose.yml
+mv ./office_compose.yml /opt/$DOMAIN/Docker-DocumentServer/docker_compose.yml
+ln -s office_compose.yml /opt/$DOMAIN/Docker-DocumentServer/docker_compose.yml /opt/$DOMAIN/office_compose.yml
+docker-compose -f /opt/$DOMAIN/office_compose.yml up -d
 echo -e "${GRA}=== Done ===${NC}"
 
 
-
+/Docker-DocumentServer/
 
 
