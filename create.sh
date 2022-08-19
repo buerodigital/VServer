@@ -3,6 +3,7 @@
 # via "git clone https://github.com/buerodigital/VServer" clonen
 
 # Bitte anpassen
+WORKFOLDER="/opt/bash"
 DOMAIN="apps.ideenrocker.com"
 SIABUSER="guest"
 SIABPASSWORD="xyz"
@@ -17,6 +18,10 @@ PUR='\033[0;35;1m'    # print text in bold purple
 YEL='\033[0;33;1m'    # print text in bold Yellow
 GRA='\033[0;37;1m'    # print text in bold Gray
 
+
+if [ ! -d "$WORKFOLDER" ]; then
+  mkdir $WORKFOLDER
+fi
 
 
 # Hinweis auf Löschung aller Daten
@@ -33,14 +38,14 @@ done
 
 echo -e "${NC}GO!"
 
-sudo docker stop $(sudo docker ps -a -q)
+docker stop $(docker ps -a -q)
 docker system prune -a
 
 rm -R /opt/*ideenrocker.com
 
 mkdir /opt/$DOMAIN
 mkdir /opt/$DOMAIN/volumes
-./ufw_rules.sh
+bash $WORKFOLDER/ufw_rules.sh
 
 
 
@@ -61,7 +66,7 @@ docker network create --driver bridge net_proxy
 echo -e "${GRA}=== Done ===${NC}"
 
 echo -e "\n${GRA}=== Creating YAML File for Proxy and starting Container ===${NC}"
-cp ./apps_compose.yml /opt/$DOMAIN/apps_compose.yml
+cp $WORKFOLDER/apps_compose.yml /opt/$DOMAIN/apps_compose.yml
 sed -i -e 's/DOMAIN/'"$DOMAIN"'/g' /opt/$DOMAIN/apps_compose.yml
 docker-compose -f /opt/$DOMAIN/apps_compose.yml up -d --remove-orphan
 echo -e "${GRA}=== Done ===${NC}"
@@ -77,7 +82,7 @@ mkdir /opt/$DOMAIN/volumes/landing_html
 echo -e "${GRA}=== Done ===${NC}"
 
 echo -e "\n${GRA}=== Creating YAML File for Shell in a Box and starting Container ===${NC}"
-cp ./landing_compose.yml /opt/$DOMAIN/landing_compose.yml
+cp $WORKFOLDER/landing_compose.yml /opt/$DOMAIN/landing_compose.yml
 sed -i -e 's/DOMAIN/'"$DOMAIN"'/g' /opt/$DOMAIN/landing_compose.yml
 sed -i -e 's/LETSENCRYPTEMAIL/'"$LETSENCRYPTEMAIL"'/g' /opt/$DOMAIN/landing_compose.yml
 docker-compose -f /opt/$DOMAIN/landing_compose.yml up -d --remove-orphan
@@ -93,7 +98,7 @@ echo -e "\n${GRA}=== Creating Bind-Volume Folders ===${NC}"
 echo -e "${GRA}=== Done ===${NC}"
 
 echo -e "\n${GRA}=== Creating YAML File for Shell in a Box and starting Container ===${NC}"
-cp ./shell_compose.yml /opt/$DOMAIN/shell_compose.yml
+cp $WORKFOLDER/shell_compose.yml /opt/$DOMAIN/shell_compose.yml
 sed -i -e 's/DOMAIN/'"$DOMAIN"'/g' /opt/$DOMAIN/shell_compose.yml
 sed -i -e 's/SIABUSER/'"$SIABUSER"'/g' /opt/$DOMAIN/shell_compose.yml
 sed -i -e 's/SIABPASSWORD/'"$SIABPASSWORD"'/g' /opt/$DOMAIN/shell_compose.yml
@@ -121,12 +126,12 @@ git clone https://github.com/ONLYOFFICE/Docker-DocumentServer /opt/$DOMAIN/
 echo -e "${GRA}=== Done ===${NC}"
 
 echo -e "\n${GRA}=== Creating YAML File for OnlyOffice and starting Container ===${NC}"
-cp ./office_compose.yml /opt/$DOMAIN/office_compose.yml
+cp $WORKFOLDER/office_compose.yml /opt/$DOMAIN/office_compose.yml
 sed -i -e 's/DOMAIN/'"$DOMAIN"'/g' /opt/$DOMAIN/office_compose.yml
 sed -i -e 's/JWTSECRET/'"$JWTSECRET"'/g' /opt/$DOMAIN/office_compose.yml
 sed -i -e 's/LETSENCRYPTEMAIL/'"$LETSENCRYPTEMAIL"'/g' /opt/$DOMAIN/office_compose.yml
 rm /opt/$DOMAIN/Docker-DocumentServer/docker_compose.yml
-mv ./office_compose.yml /opt/$DOMAIN/Docker-DocumentServer/docker_compose.yml
+mv $WORKFOLDER/office_compose.yml /opt/$DOMAIN/Docker-DocumentServer/docker_compose.yml
 ln -s office_compose.yml /opt/$DOMAIN/Docker-DocumentServer/docker_compose.yml /opt/$DOMAIN/office_compose.yml
 docker-compose -f /opt/$DOMAIN/office_compose.yml up -d --remove-orphan
 echo -e "${GRA}=== Done ===${NC}"
