@@ -1,0 +1,71 @@
+version: '2'
+services:
+  onlyoffice-documentserver:
+    build:
+      context: .
+    container_name: onlyoffice-documentserver
+    depends_on:
+      - onlyoffice-postgresql
+      - onlyoffice-rabbitmq
+    environment:
+      - DB_TYPE=postgres
+      - DB_HOST=onlyoffice-postgresql
+      - DB_PORT=5432
+      - DB_NAME=onlyoffice
+      - DB_USER=onlyoffice
+      - AMQP_URI=amqp://guest:guest@onlyoffice-rabbitmq
+      # Uncomment strings below to enable the JSON Web Token validation.
+      - JWT_ENABLED=true
+      - JWT_SECRET=JWTSECRET
+      #- JWT_HEADER=Authorization
+      #- JWT_IN_BODY=true
+      - VIRTUAL_PORT=80
+      - VIRTUAL_HOST=office.DOMAIN
+      - LETSENCRYPT_HOST=office.DOMAIN
+      - LETSENCRYPT_EMAIL=LETSENCRYPTEMAIL
+    expose:
+      - '80'
+    stdin_open: true
+    restart: always
+    stop_grace_period: 60s
+    volumes:
+       - "/opt/DOMAIN/volumes/office_data:opt/office.apps.ideenrocker.com/vol_data:/var/www/onlyoffice/Data"
+       - "/opt/DOMAIN/volumes/office_log:/opt/office.apps.ideenrocker.com/vol_log:/var/log/onlyoffice"
+       - "/opt/DOMAIN/volumes/office_cache_files:/opt/office.apps.ideenrocker.com/vol_cache_files:/var/lib/onlyoffice/documentserver/App_Data/cache/files"
+       - "/opt/DOMAIN/volumes/office_public_files:/opt/office.apps.ideenrocker.com/vol_public_files:/var/www/onlyoffice/documentserver-example/public/files"
+       - "/opt/DOMAIN/volumes/office_fonts:/opt/office.apps.ideenrocker.com/vol_fonts:/usr/share/fonts"
+    networks:
+      - net_proxy
+      - back_office
+       
+  onlyoffice-rabbitmq:
+    container_name: onlyoffice-rabbitmq
+    image: rabbitmq
+    restart: always
+    expose:
+      - '5672'
+    networks:
+      - back_office
+
+  onlyoffice-postgresql:
+    container_name: onlyoffice-postgresql
+    image: postgres:9.5
+    environment:
+      - POSTGRES_DB=onlyoffice
+      - POSTGRES_USER=onlyoffice
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    restart: always
+    expose:
+      - '5432'
+    volumes:
+      - /opt/DOMAIN/volumes/office_postgresql_data:/var/lib/postgresql
+    networks:
+      - back_office
+
+
+networks:                                                                                                                                                                                                          
+  net_proxy:                                                                                                                                                                                                       
+    external:                                                                                                                                                                                                      
+      name: net_proxy                                                                                                                                                                                              
+  back_office:                                                                                                                                                                                                     
+    driver: bridge
