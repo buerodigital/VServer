@@ -7,11 +7,11 @@ clear
 echo -e "${YEL}=== Installing NGINX-Proxy "$DOMAIN" ===${NC}"
 
 echo -e "\n${GRA}=== Creating Bind-Volume Folders ===${NC}"
-mkdir $WORKFOLDER/volumes/proxy_certs
-mkdir $WORKFOLDER/volumes/proxy_conf
-mkdir $WORKFOLDER/volumes/volumes/proxy_vhost
-mkdir $WORKFOLDER/volumes/proxy_dhparam
-mkdir $WORKFOLDER/volumes/volumes/proxy_html
+mkdir $WORKFOLDER/volumes/00_proxy_certs
+mkdir $WORKFOLDER/volumes/00_proxy_conf
+mkdir $WORKFOLDER/volumes/00_proxy_vhost
+mkdir $WORKFOLDER/volumes/00_proxy_dhparam
+mkdir $WORKFOLDER/volumes/00_proxy_html
 echo -e "${GRA}=== Done ===${NC}"
 
 echo -e "\n${GRA}=== Creating Proxy Network ===${NC}"
