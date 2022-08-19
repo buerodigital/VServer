@@ -40,6 +40,7 @@ docker system prune -a
 
 mkdir /opt/$DOMAIN
 mkdir /opt/$DOMAIN/volumes
+./ufw_rules.sh
 
 
 
@@ -131,6 +132,5 @@ docker-compose -f /opt/$DOMAIN/office_compose.yml up -d
 echo -e "${GRA}=== Done ===${NC}"
 
 
-/Docker-DocumentServer/
 
 
