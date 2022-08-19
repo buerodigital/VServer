@@ -1,0 +1,21 @@
+version: "3"
+                                                                                                                                                                                                                   
+services:
+  nginx_default:
+    image: nginx:alpine
+    expose:
+      - "80"
+    volumes:
+      - /opt/DOMAIN/volumes/landing_html:/usr/share/nginx/html
+    environment:
+      - VIRTUAL_PORT=80
+      - VIRTUAL_HOST=DOMAIN
+      - LETSENCRYPT_HOST=DOMAIN
+      - LETSENCRYPT_EMAIL=LETSENCRYPTEMAIL
+    networks:
+      - net_proxy
+                                                                                                                                                                                                                   
+networks:
+  net_proxy:
+    external:
+      name: net_proxy

@@ -1,0 +1,38 @@
+version: '2'
+                                                                                                                                                                                                                   
+services:
+                                                                                                                                                                                                                   
+  nginx-proxy:
+    container_name: nginx-proxy
+    restart: always
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      - "/opt/DOMAIN/volumes/proxy_certs:/etc/nginx/certs:ro"
+      - "/opt/DOMAIN/volumes/proxy_conf:/etc/nginx/conf.d"
+      - "/opt/DOMAIN/volumes/proxy_vhost:/etc/nginx/vhost.d"
+      - "/opt/DOMAIN/volumes/proxy_dhparam:/etc/nginx/dhparam"
+      - "/opt/DOMAIN/volumes/proxy_html:/usr/share/nginx/html"
+    networks:
+      - net_proxy
+                                                                                                                                                                                                                   
+  nginx-letsencrypt-companion:
+    container_name: nginx-letsencrypt-companion
+    restart: always
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes:
+      - "/opt/DOMAIN/volumes/proxy_certs:/etc/nginx/certs"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    volumes_from:
+      - "nginx-proxy"
+    networks:
+      - net_proxy
+                                                                                                                                                                                                                   
+                                                                                                                                                                                                                   
+networks:
+  net_proxy:
+    external:
+      name: net_proxy
