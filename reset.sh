@@ -23,6 +23,9 @@ yes | docker system prune -a
 
 rm -R $WORKFOLDER
 mkdir $WORKFOLDER
+mkdir $WORKFOLDER/volumes
+
+
 
 # Updating Firewall Rules
 clear
