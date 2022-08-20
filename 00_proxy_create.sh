@@ -7,6 +7,7 @@ clear
 echo -e "${YEL}=== Installing NGINX-Proxy "$DOMAIN" ===${NC}"
 
 echo -e "\n${GRA}=== Creating Bind-Volume Folders ===${NC}"
+mkdir $WORKFOLDER/00_proxy
 mkdir $WORKFOLDER/00_proxy/certs
 mkdir $WORKFOLDER/00_proxy/conf
 mkdir $WORKFOLDER/00_proxy/vhost
