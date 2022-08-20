@@ -58,3 +58,18 @@ echo -e "\n" >> ./04_coturn_keys.txt
 sleep 1
 echo -e "${GRA}=== Done ===${NC}"
 
+
+# Installation Proxy
+clear
+echo -e "${YEL}=== Installing Nextcloud Talk High Performance Backend coturn."$DOMAIN" ===${NC}"
+
+
+echo -e "\n${GRA}=== Clonig Github-Repository ===${NC}"
+mkdir $WORKFOLDER/04_coturn
+cd $WORKFOLDER/04_coturn
+git clone https://github.com/strukturag/nextcloud-spreed-signaling
+
+
+echo -e "\n${GRA}=== Creating Bind-Volume Folders ===${NC}"
+mkdir $WORKFOLDER/00_proxy
+
