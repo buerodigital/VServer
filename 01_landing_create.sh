@@ -21,5 +21,5 @@ docker-compose -f $WORKFOLDER/01_landing/01_landing_compose.yml up -d
 echo -e "${GRA}=== Done ===${NC}"
 
 echo -e "\n${GRA}=== Creating index.html ===${NC}"
-cp /opt_VServer/02_landing_index.html $WORKFOLDER/01_landing/html/index.html
+cp /opt_VServer/01_landing_index.html $WORKFOLDER/01_landing/html/index.html
 echo -e "${GRA}=== Done ===${NC}"
