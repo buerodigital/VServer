@@ -33,7 +33,7 @@ echo -e "${GRA}=== Done ===${NC}"
 echo -e "\n${GRA}=== #and a blockkey ===${NC}"
 echo -e "#BLOCKKEY " >> ./04_coturn_keys.txt
 BLOCKKEY="$(openssl rand -base64 16)" 
-echo $ $BLOCKKEY >> ./04_coturn_keys.txt
+echo $BLOCKKEY >> ./04_coturn_keys.txt
 echo -e "\n" >> ./04_coturn_keys.txt
 sleep 1
 echo -e "${GRA}=== Done ===${NC}"
