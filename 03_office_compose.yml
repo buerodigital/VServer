@@ -1,8 +1,8 @@
 version: '2'
 services:
   onlyoffice-documentserver:
-    build:
-      context: .
+#   build:
+#     context: .
     container_name: onlyoffice-documentserver
     depends_on:
       - onlyoffice-postgresql
@@ -29,11 +29,11 @@ services:
     restart: always
     stop_grace_period: 60s
     volumes:
-       - "/opt/DOMAIN/volumes/office_data:/var/www/onlyoffice/Data"
-       - "/opt/DOMAIN/volumes/office_log:/var/log/onlyoffice"
-       - "/opt/DOMAIN/volumes/office_cache_files:/var/lib/onlyoffice/documentserver/App_Data/cache/files"
-       - "/opt/DOMAIN/volumes/office_public_files::/var/www/onlyoffice/documentserver-example/public/files"
-       - "/opt/DOMAIN/volumes/office_fonts:/usr/share/fonts"
+       - "WORKFOLDER/03_office/data:/var/www/onlyoffice/Data"
+       - "WORKFOLDER/03_office/log:/var/log/onlyoffice"
+       - "WORKFOLDER/03_office/cache_files:/var/lib/onlyoffice/documentserver/App_Data/cache/files"
+       - "WORKFOLDER/03_office/public_files::/var/www/onlyoffice/documentserver-example/public/files"
+       - "WORKFOLDER/03_office/fonts:/usr/share/fonts"
     networks:
       - net_proxy
       - back_office
@@ -58,7 +58,7 @@ services:
     expose:
       - '5432'
     volumes:
-      - /opt/DOMAIN/volumes/office_postgresql_data:/var/lib/postgresql
+      - WORKFOLDER/03_office/postgresql_data:/var/lib/postgresql
     networks:
       - back_office
 
