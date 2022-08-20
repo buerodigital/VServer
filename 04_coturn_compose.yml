@@ -4,9 +4,14 @@ services:
   spreedbackend:
     build: .
     volumes:
-      - ./server.conf:/config/server.conf
-    network_mode: host
+      - "WORKFOLDER/04_coturn/server.conf:/config/server.conf"
+    networks:
+      - net_proxy
+      - signal
+#    network_mode: host
     restart: unless-stopped
+    expose:
+      - '80'
     depends_on:
       - nats
       - janus
@@ -15,21 +20,37 @@ services:
   nats:
     image: nats:2.1
     volumes:
-      - ./gnatsd.conf:/config/gnatsd.conf
+      - "WORKFOLDER/04_coturn/gnatsd.conf:/config/gnatsd.conf"
     command: ["-c", "/config/gnatsd.conf"]
-    network_mode: host
+    networks:
+      - net_proxy
+      - signal
+#    network_mode: host
     restart: unless-stopped
     
   janus:
     build: docker/janus
     command: ["janus", "--full-trickle"]
-    network_mode: host
+#    network_mode: host
+    networks:
+      - net_proxy
+      - signal
     restart: unless-stopped
     
   coturn:
     build: docker/coturn
-    network_mode: host
+    networks:
+      - net_proxy
+      - signal
+#    network_mode: host
     environment:
       REALM: signaling.example.com
       STATIC_SECRET: openssl rand -hex 32
     restart: unless-stopped
+
+networks:                                                                                                                                                                                                          
+  net_proxy:                                                                                                                                                                                                       
+    external:                                                                                                                                                                                                      
+      name: net_proxy                                                                                                                                                                                              
+  back_office:                                                                                                                                                                                                     
+    driver: signal
