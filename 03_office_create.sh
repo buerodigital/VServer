@@ -25,5 +25,5 @@ sed -i -e "s|DOMAIN|$DOMAIN|g" $WORKFOLDER/03_office/03_office_compose.yml
 sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WORKFOLDER/03_office/03_office_compose.yml
 sed -i -e "s|JWTSECRET|$JWTSECRET|g" $WORKFOLDER/03_office/03_office_compose.yml
 sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WORKFOLDER/03_office/03_office_compose.yml
-docker-compose -f $WORKFOLDER/03_office/03_office.yml up -d
+docker-compose -f $WORKFOLDER/03_office/03_office_compose.yml up -d
 echo -e "${GRA}=== Done ===${NC}"
