@@ -13,6 +13,11 @@ SIABPASSWORD="xyz"
 # OnlyOffice
 JWTSECRET=caioe
 
+#Coturn
+
+#Redirect
+REDIRECT_DOMAIN="https://www.ideenrocker.com
+
 
 # Farbedefinitionen
 
