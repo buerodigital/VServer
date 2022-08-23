@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+#fuck
 source include.sh
 
 clear                                                                                                                                                                                                              
