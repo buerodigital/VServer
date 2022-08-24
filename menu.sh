@@ -1,9 +1,8 @@
 #!/bin/bash
 
-source ~/Dokumente/GitHub/VServer/bash/include.sh
+source ./bash/include.sh
 
 clear
-PUR='\033[0;35;1m'
 
 funct_menu_1 () {
 clear
@@ -102,18 +101,18 @@ clear
 	echo -e "${PUR}****************************************${NC}"
 	echo -e "${PUR}* Menü                         Seite 2 *${NC}"
 	echo -e "${PUR}****************************************${NC}"
-	echo -e "${PUR}* 10 - Punkt 0                         *${NC}"
-	echo -e "${PUR}* 11 - Punkt 1                         *${NC}"
-	echo -e "${PUR}* 12 - Punkt 2                         *${NC}"
-	echo -e "${PUR}* 13 - Punkt 3                         *${NC}"
-	echo -e "${PUR}* 14 - Punkt 4                         *${NC}"
-	echo -e "${PUR}* 15 - Punkt 5                         *${NC}"
-	echo -e "${PUR}* 16 - Punkt 6                         *${NC}"
-	echo -e "${PUR}* 17 - Punkt 7                         *${NC}"
-	echo -e "${PUR}* 18 - Punkt 8                         *${NC}"
-	echo -e "${PUR}* 19 - Punkt 9                         *${NC}"
+	echo -e "${PUR}* 10 - Punkt 10                        *${NC}"
+	echo -e "${PUR}* 11 - Punkt 11                        *${NC}"
+	echo -e "${PUR}* 12 - Punkt 12                        *${NC}"
+	echo -e "${PUR}* 13 - Punkt 13                        *${NC}"
+	echo -e "${PUR}* 14 - Punkt 14                        *${NC}"
+	echo -e "${PUR}* 15 - Punkt 15                        *${NC}"
+	echo -e "${PUR}* 16 - Punkt 16                        *${NC}"
+	echo -e "${PUR}* 17 - Punkt 17                        *${NC}"
+	echo -e "${PUR}* 18 - Punkt 18                        *${NC}"
+	echo -e "${PUR}* 19 - Punkt 19                        *${NC}"
 	echo -e "${PUR}****************************************${NC}"
-	echo -e "${PUR}* < - zurück                           *${NC}"
+	echo -e "${PUR}* < - zurück                   vor - > *${NC}"
 	echo -e "${PUR}*             q  - Beenden             *${NC}"
 	echo -e "${PUR}****************************************${NC}"
 
@@ -176,6 +175,10 @@ read n1
 	echo "zurück"
 	funct_menu_1
 	;;
+	">")
+	echo "vor"
+	funct_menu_3
+	;;
     "q")
 	exit
 	;;
@@ -183,6 +186,98 @@ read n1
 	echo "Ungültige Eingabe - Bitte wiederholen"
 	sleep 2
 	funct_menu_2
+	;;
+  esac
+
+}
+
+funct_menu_3 () {
+clear
+
+	echo -e "${PUR}****************************************${NC}"
+	echo -e "${PUR}* Menü                         Seite 2 *${NC}"
+	echo -e "${PUR}****************************************${NC}"
+	echo -e "${PUR}* 20 - Punkt 20                        *${NC}"
+	echo -e "${PUR}* 21 - Punkt 21                        *${NC}"
+	echo -e "${PUR}* 22 - Punkt 22                        *${NC}"
+	echo -e "${PUR}* 23 - Punkt 23                        *${NC}"
+	echo -e "${PUR}* 24 - Punkt 24                        *${NC}"
+	echo -e "${PUR}* 25 - Punkt 25                        *${NC}"
+	echo -e "${PUR}* 26 - Punkt 26                        *${NC}"
+	echo -e "${PUR}* 27 - Punkt 27                        *${NC}"
+	echo -e "${PUR}* 28 - Punkt 28                        *${NC}"
+	echo -e "${PUR}* 29 - Punkt 29                        *${NC}"
+	echo -e "${PUR}****************************************${NC}"
+	echo -e "${PUR}* < - zurück                           *${NC}"
+	echo -e "${PUR}*             q  - Beenden             *${NC}"
+	echo -e "${PUR}****************************************${NC}"
+
+echo -en "\n${PUR}Enter a number: ${NC}"
+
+read n1
+
+  case $n1 in
+    "20")
+	echo "Hauptmenü 20"
+	sleep 2
+	funct_menu_3
+ 	;;
+    "21")
+	echo "Hauptmenü 21"
+	sleep 2
+	funct_menu_3
+	;;
+    "22")
+	echo "Hauptmenü 22"
+	sleep 2
+	funct_menu_3
+	;;
+    "23")
+	echo "Hauptmenü 23"
+	sleep 2
+	funct_menu_3
+	;;
+    "24")
+	echo "Hauptmenü 24"
+	sleep 2
+	funct_menu_3
+	;;
+    "25")
+	echo "Hauptmenü 25"
+	sleep 2
+	funct_menu_3
+	;;
+    "26")
+	echo "Hauptmenü 26"
+	sleep 2
+	funct_menu_3
+	;;
+    "27")
+	echo "Hauptmenü 27"
+	sleep 2
+	funct_menu_3
+	;;
+    "28")
+	echo "Hauptmenü 28"
+	sleep 2
+	funct_menu_3
+	;;
+    "29")
+	echo "Hauptmenü 29"
+	sleep 2
+	funct_menu_3
+	;;
+	"<")
+	echo "zurück"
+	funct_menu_2
+	;;
+    "q")
+	exit
+	;;
+    *)
+	echo "Ungültige Eingabe - Bitte wiederholen"
+	sleep 2
+	funct_menu_3
 	;;
   esac
 
