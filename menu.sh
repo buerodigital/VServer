@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source include.sh
+source ./bash/include.sh
 
 clear
 
