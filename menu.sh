@@ -95,6 +95,8 @@ read n1
 }
 
 funct_menu_2 () {
+clear
+
 	echo -e "${PUR}****************************************${NC}"
 	echo -e "${PUR}* Menü                         Seite 2 *${NC}"
 	echo -e "${PUR}****************************************${NC}"
@@ -183,4 +185,4 @@ read n1
 
 }
 
-funct_main
+funct_menu_1
