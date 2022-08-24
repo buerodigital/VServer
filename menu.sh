@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./bash/include.sh
+source ~/Dokumente/GitHub/VServer/bash/include.sh
 
 clear
 
