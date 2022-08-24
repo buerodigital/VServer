@@ -3,6 +3,7 @@
 source ~/Dokumente/GitHub/VServer/bash/include.sh
 
 clear
+PUR='\033[0;35;1m'
 
 funct_menu_1 () {
 clear
