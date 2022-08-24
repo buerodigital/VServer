@@ -9,7 +9,7 @@ clear
 	echo -e "${PUR}****************************************${NC}"
 	echo -e "${PUR}* Menü                         Seite 1 *${NC}"
 	echo -e "${PUR}****************************************${NC}"
-	echo -e "${PUR}* 00 - Punkt 0                         *${NC}"
+	echo -e "${PUR}* 00 - Konfigurationsdatei anpassen    *${NC}"
 	echo -e "${PUR}* 01 - Punkt 1                         *${NC}"
 	echo -e "${PUR}* 02 - Punkt 2                         *${NC}"
 	echo -e "${PUR}* 03 - Punkt 3                         *${NC}"
@@ -30,9 +30,8 @@ read n1
 
   case $n1 in
     "00")
-	echo "Hauptmenü 0"
-	sleep 2
-	funct_menu_1
+	nano ./bash/config.sh
+	
  	;;
     "01")
 	echo "Hauptmenü 1"
@@ -195,7 +194,7 @@ funct_menu_3 () {
 clear
 
 	echo -e "${PUR}****************************************${NC}"
-	echo -e "${PUR}* Menü                         Seite 2 *${NC}"
+	echo -e "${PUR}* Menü                         Seite 3 *${NC}"
 	echo -e "${PUR}****************************************${NC}"
 	echo -e "${PUR}* 20 - Punkt 20                        *${NC}"
 	echo -e "${PUR}* 21 - Punkt 21                        *${NC}"
