@@ -4,23 +4,23 @@ source include.sh
 
 clear
 
-funct_main () {
+funct_menu_1 () {
 	echo -e "${PUR}****************************************${NC}"
-	echo -e "${PUR}*              Hauptmenü               *${NC}"
+	echo -e "${PUR}* Menü                         Seite 1 *${NC}"
 	echo -e "${PUR}****************************************${NC}"
-	echo -e "${PUR}* 0 - Punkt 0                          *${NC}"
-	echo -e "${PUR}* 1 - Punkt 1                          *${NC}"
-	echo -e "${PUR}* 2 - Punkt 2                          *${NC}"
-	echo -e "${PUR}* 3 - Punkt 3                          *${NC}"
-	echo -e "${PUR}* 4 - Punkt 4                          *${NC}"
-	echo -e "${PUR}* 5 - Punkt 5                          *${NC}"
-	echo -e "${PUR}* 6 - Punkt 6                          *${NC}"
-	echo -e "${PUR}* 7 - Punkt 7                          *${NC}"
-	echo -e "${PUR}* 8 - Punkt 8                          *${NC}"
-	echo -e "${PUR}* 9 - Punkt 9                          *${NC}"
+	echo -e "${PUR}* 00 - Punkt 0                         *${NC}"
+	echo -e "${PUR}* 01 - Punkt 1                         *${NC}"
+	echo -e "${PUR}* 02 - Punkt 2                         *${NC}"
+	echo -e "${PUR}* 03 - Punkt 3                         *${NC}"
+	echo -e "${PUR}* 04 - Punkt 4                         *${NC}"
+	echo -e "${PUR}* 05 - Punkt 5                         *${NC}"
+	echo -e "${PUR}* 06 - Punkt 6                         *${NC}"
+	echo -e "${PUR}* 07 - Punkt 7                         *${NC}"
+	echo -e "${PUR}* 08 - Punkt 8                         *${NC}"
+	echo -e "${PUR}* 09 - Punkt 9                         *${NC}"
 	echo -e "${PUR}****************************************${NC}"
-	echo -e "${PUR}*                                      *${NC}"
-	echo -e "${PUR}* q  - Beenden                         *${NC}"
+	echo -e "${PUR}* < - zurück                   vor - > *${NC}"
+	echo -e "${PUR}*             q  - Beenden             *${NC}"
 	echo -e "${PUR}****************************************${NC}"
 
 echo -en "\n${PUR}Enter a number: ${NC}"
