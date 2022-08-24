@@ -88,6 +88,7 @@ read n1
 	;;
     *)
 	echo "Ungültige Eingabe - Bitte wiederholen"
+	sleep 2
 	funct_menu_1
 	;;
   esac
@@ -179,6 +180,7 @@ read n1
 	;;
     *)
 	echo "Ungültige Eingabe - Bitte wiederholen"
+	sleep 2
 	funct_menu_2
 	;;
   esac
