@@ -7,6 +7,7 @@ whiptail --title "Main Menu" --menu "Make your choice" --cancel-button "Beenden"
 	"1)" "Submenu 1" \
 	"2)" "Submenu 2" \
 	"3)" "Submenu 3" \
+	"==" "============================ " \
 	"q)" "quit"  3>&2 2>&1 1>&3
 )
 
@@ -20,8 +21,9 @@ case $CHOICE in
 	"3)")
 		funct_sub3
 		;;
-	)
-	;;
+	"==")
+		funct_main
+		;;
 	"q)") 
 		exit
 		;;
@@ -38,6 +40,7 @@ whiptail --title "Submenu 1" --menu "Make your choice" --cancel-button "Beenden"
 	"4)" "Sub 1 Doing 4" \
 	"5)" "Sub 1 Doing 5" \
 	"6)" "Sub 1 Doing 6" \
+	"==" "============================ " \
 	"b)" "back" \
 	"q)" "quit"  3>&2 2>&1 1>&3  
 )
@@ -76,6 +79,9 @@ case $CHOICE in
 	"b)") 
 		funct_main
 		;;
+	"==") 
+		funct_sub1
+		;;
 	"q)") 
 		exit
 		;;
@@ -92,6 +98,7 @@ whiptail --title "Submenu 2" --menu "Make your choice" --cancel-button "Beenden"
 	"4)" "Sub 2 Doing 4" \
 	"5)" "Sub 2 Doing 5" \
 	"6)" "Sub 2 Doing 6" \
+	"==" "============================ " \
 	"b)" "back" \
 	"q)" "quit"  3>&2 2>&1 1>&3  
 )
@@ -125,6 +132,9 @@ case $CHOICE in
 		whiptail --msgbox "$result" 16 100
 		funct_sub1
 		;;
+	"==") 
+		funct_sub2
+		;;
 	"b)") 
 		funct_main
 		;;
@@ -144,6 +154,7 @@ whiptail --title "Submenu 2_1" --menu "Make your choice" --cancel-button "Beende
 	"4)" "Sub 2_1 Doing 4" \
 	"5)" "Sub 2_1 Doing 5" \
 	"6)" "Sub 2_1 Doing 6" \
+	"==" "============================ " \
 	"b)" "back" \
 	"q)" "quit"  3>&2 2>&1 1>&3  
 )
@@ -180,6 +191,9 @@ case $CHOICE in
 		funct_sub1
 		;;
 	"b)") 
+		funct_sub2_1
+		;;
+	"b)") 
 		funct_sub2
 		;;
 	"q)") 
@@ -198,6 +212,7 @@ whiptail --title "Submenu 3" --menu "Make your choice" --cancel-button "Beenden"
 	"4)" "Sub 3 Doing 4" \
 	"5)" "Sub 3 Doing 5" \
 	"6)" "Sub 3 Doing 6" \
+	"==" "============================ " \
 	"b)" "back" \
 	"q)" "quit"  3>&2 2>&1 1>&3  
 )
@@ -232,6 +247,9 @@ case $CHOICE in
 		result="Sub3_Do6"
 		whiptail --msgbox "$result" 16 100
 		funct_sub
+		;;
+	"b)") 
+		funct_sub3
 		;;
 	"b)") 
 		funct_main
