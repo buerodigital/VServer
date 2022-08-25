@@ -50,21 +50,21 @@ case $CHOICE in
 		;;
 	"2)")
 		DOMAIN2=$(whiptail --inputbox "Domainname Server (aktuell "$DOMAIN"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$DOMAIN|$DOMAIN2|g" ./VServer/bash/config.sh
+		sed -i -e "s|$DOMAIN|$DOMAIN2|g" ./bash/config.sh
 		
 		LETSENCRYPTEMAIL2=$(whiptail --inputbox "email Adresse für Lets Encrypt (aktuell "$LETSENCRYPTEMAIL"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL2|g" ./VServer/bash/config.sh
+		sed -i -e "s|$LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL2|g" ./bash/config.sh
 		
 		FTP_URL2=$(whiptail --inputbox "Domainname Server (aktuell "$FTP_URL"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$FTP_URL|$FTP_URL2|g" ./VServer/bash/config.sh
+		sed -i -e "s|$FTP_URL|$FTP_URL2|g" ./bash/config.sh
 		
 		FTP_USER2=$(whiptail --inputbox "Domainname Server (aktuell "$FTP_USER"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$FTP_USER|$FTP_USER2|g" ./VServer/bash/config.sh
+		sed -i -e "s|$FTP_USER|$FTP_USER2|g" ./bash/config.sh
 		
 		FTP_PASS2=$(whiptail --inputbox "Domainname Server (aktuell "$FTP_PASS"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$FTP_PASS|$FTP_PASS2|g" ./VServer/bash/config.sh
+		sed -i -e "s|$FTP_PASS|$FTP_PASS2|g" ./bash/config.sh
 		
-		whiptail --msgbox "$(cat ./VServer/bash/config.sh)" 16 100
+		whiptail --msgbox "$(cat ./bash/config.sh)" 16 100
 		funct_system
 		;;
 		
