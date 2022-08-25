@@ -1,8 +1,8 @@
 #Allgemein
 DOMAIN=test.domain.com
-LETSENCRYPTEMAIL=
+LETSENCRYPTEMAIL=test@domain.com
 
 #Zugangsdaten FTP Server
-FTP_URL=
-FTP_USER=
-FTP_PASS=
+FTP_URL=ftp.domain.com
+FTP_USER=user
+FTP_PASS=pass
