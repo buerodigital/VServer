@@ -64,7 +64,7 @@ case $CHOICE in
 		FTP_PASS2=$(whiptail --inputbox "Domainname Server (aktuell "$FTP_PASS"):" 16 100 3>&1 1>&2 2>&3)
 		sed -i -e "s|$FTP_PASS|$FTP_PASS2|g" ./VServer/bash/config.sh
 		
-		whiptail --msgbox ./VServer/bash/config.sh 16 100
+		whiptail --msgbox "$(cat ./VServer/bash/config.sh)" 16 100
 		;;
 		
 	"3)")
