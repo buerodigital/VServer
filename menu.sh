@@ -72,7 +72,7 @@ case $CHOICE in
 		curlftpfs $FTP_USER:$FTP_PASS@$FTP_URL /opt/VServer_backup -o nonempty
 		bak_date=$(date +'%Y_%m_%d_%H_%M')
 		mkdir /opt/VServer_backup/$bak_date
-		cp -R ./VServer/* /opt/VServer_backup/$bak_date/
+		cp -R /opt/VServer/* /opt/VServer_backup/$bak_date/
 		umount /opt/VServer_backup
 		whiptail --msgbox "Done" 16 100
 		funct_system
