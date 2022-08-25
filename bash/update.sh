@@ -16,3 +16,5 @@ echo -e "\n=== Rebooting if required ==="
 [ -f /var/run/reboot-required ] && sudo reboot -f
                                                                                                                                                                                                                    
 echo -e "\n=== Done ==="
+
+read -n1 -rp "Press any key to continue: " key
