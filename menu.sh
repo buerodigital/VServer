@@ -49,7 +49,7 @@ case $CHOICE in
 		funct_system
 		;;
 	"2)")
-		DOMAIN2=$(whiptail --inputbox "Domainname Server (aktuell "$DOMAIN"):" 16 100 3>&1 1>&2 2>&3)
+		DOMAIN2=$(whiptail --inputbox "Domainname Server (aktuell "$DOMAIN"):" 16 100)
 		sed -i -e "s|$DOMAIN|$DOMAIN2|g" ./VServer/bash/config.sh
 		whiptail --msgbox "$DOMAIN2" 16 100
 		;;
