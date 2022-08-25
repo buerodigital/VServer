@@ -1,15 +1,15 @@
 #!/bin/bash
 
-export NEWT_COLORS=’
-root=,green
+export NEWT_COLORS='
+root=,blue
 window=,black
 border=white,black
 textbox=white,black
 button=black,white
 entry=,black
 checkbox=,black
-compactbutton=,green
-‘
+compactbutton=,blue
+'
 
 
 CHOICE=$(
