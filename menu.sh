@@ -12,7 +12,7 @@ whiptail --title "Main Menu" --menu "Make your choice" --cancel-button "Beenden"
 
 case $CHOICE in
 	"1)")
-		funct_sub1
+		funct_system
 		;;
 	"2)")
 		funct_sub2
@@ -27,9 +27,9 @@ esac
 }
 
 
-funct_sub1 () {
+funct_system () {
 CHOICE=$(
-whiptail --title "Submenu 1" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
+whiptail --title "Submenu System / Docker" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
 	"1)" "Systemvorbereitung (Docker, Docker-Compose,... installieren)" \
 	"2)" "Konfigurationsdaten für Grundinstallation bearbeiten" \
 	"3)" "Backup erstellen" \
@@ -45,37 +45,37 @@ case $CHOICE in
 	"1)")
 		result="Sub1_Do1"
 		whiptail --msgbox "$result" 16 100
-		funct_sub1
+		funct_system
 		;;
 	"2)")
 		result="Sub1_Do2"
 		whiptail --msgbox "$result" 16 100
-		funct_sub1
+		funct_system
 		;;
 	"3)")
 		result="Sub1_Do3"
 		whiptail --msgbox "$result" 16 100
-		funct_sub1
+		funct_system
 		;;
 	"4)")
 		result="Sub1_Do4"
 		whiptail --msgbox "$result" 16 100
-		funct_sub1
+		funct_system
 		;;
 	"5)")
 		result="Sub1_Do5"
 		whiptail --msgbox "$result" 16 100
-		funct_sub1
+		funct_system
 		;;
 	"6)")
 		bash ./bash/update.sh
-		funct_sub1
+		funct_system
 		;;
 	"b)") 
 		funct_main
 		;;
 	"==") 
-		funct_sub1
+		funct_system
 		;;
 	"q)") 
 		exit
