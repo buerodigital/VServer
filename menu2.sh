@@ -21,7 +21,7 @@ whiptail --title "Tileltext" --menu "Make your choice" 16 100 9 \
         "4)" "Submenu 4" \
         "5)" "Submenu 5" \
         "6)" "Submenu 6" \
-        "q)" "QUit"  3>&2 2>&1 1>&3
+        "q)" "quit"  3>&2 2>&1 1>&3
                                                                                                                                                                                                                    
 )
                                                                                                                                                                                                                    
@@ -46,8 +46,9 @@ case $CHOICE in
         "6)")
                 result="Sub6"
         ;;
-        "q)") exit
+        "q)") 
+                exit
         ;;
 esac
 
-whiptail --msgbox "$result" 20 78
+whiptail --msgbox "$result" 16 100
