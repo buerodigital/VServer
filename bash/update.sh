@@ -17,4 +17,4 @@ echo -e "\n=== Rebooting if required ==="
                                                                                                                                                                                                                    
 echo -e "\n=== Done ==="
 
-read -n1 -rp "Press any key to continue: " key
+read -n1 -rp "Press any key to continue" key
