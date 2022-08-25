@@ -43,8 +43,7 @@ whiptail --title "Submenu System / Docker" --menu "Make your choice" --cancel-bu
 
 case $CHOICE in
 	"1)")
-		result="Sub1_Do1"
-		whiptail --msgbox "$result" 16 100
+		bash ./bash/requirements.sh
 		funct_system
 		;;
 	"2)")
