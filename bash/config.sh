@@ -1,5 +1,5 @@
 #Allgemein
-DOMAIN=
+DOMAIN=test.domain.com
 LETSENCRYPTEMAIL=
 
 #Zugangsdaten FTP Server
