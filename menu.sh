@@ -4,9 +4,8 @@
 funct_main () {
 CHOICE=$(
 whiptail --title "Main Menu" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
-	"1)" "Submenu 1" \
-	"2)" "Submenu 2" \
-	"3)" "Submenu 3" \
+	"1)" "System / Docker" \
+	"2)" "Apps" \
 	"==" "============================ " \
 	"q)" "quit"  3>&2 2>&1 1>&3
 )
@@ -17,9 +16,6 @@ case $CHOICE in
 		;;
 	"2)")
 		funct_sub2
-		;;
-	"3)")
-		funct_sub3
 		;;
 	"==")
 		funct_main
@@ -34,12 +30,12 @@ esac
 funct_sub1 () {
 CHOICE=$(
 whiptail --title "Submenu 1" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
-	"1)" "Sub 1 Doing 1" \
-	"2)" "Sub 1 Doing 2" \
-	"3)" "Sub 1 Doing 3" \
-	"4)" "Sub 1 Doing 4" \
-	"5)" "Sub 1 Doing 5" \
-	"6)" "Sub 1 Doing 6" \
+	"1)" "Systemvorbereitung (Docker, Docker-Compose,... installieren)" \
+	"2)" "Konfigurationsdaten für Grundinstallation bearbeiten" \
+	"3)" "Backup erstellen" \
+	"4)" "Backup einspielen" \
+	"5)" "Docker Reset (Installation zurücksetzen ohne Backup)" \
+	"6)" "System Update" \
 	"==" "============================ " \
 	"b)" "back" \
 	"q)" "quit"  3>&2 2>&1 1>&3  
@@ -72,8 +68,7 @@ case $CHOICE in
 		funct_sub1
 		;;
 	"6)")
-		result="Sub1_Do6"
-		whiptail --msgbox "$result" 16 100
+		bash ./bash/update.sh
 		funct_sub1
 		;;
 	"b)") 
@@ -202,62 +197,5 @@ case $CHOICE in
 esac
 }
 
-
-funct_sub3 () {
-CHOICE=$(
-whiptail --title "Submenu 3" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
-	"1)" "Sub 3 Doing 1" \
-	"2)" "Sub 3 Doing 2" \
-	"3)" "Sub 3 Doing 3" \
-	"4)" "Sub 3 Doing 4" \
-	"5)" "Sub 3 Doing 5" \
-	"6)" "Sub 3 Doing 6" \
-	"==" "============================ " \
-	"b)" "back" \
-	"q)" "quit"  3>&2 2>&1 1>&3  
-)
-
-case $CHOICE in
-	"1)")
-		result="Sub3_Do1"
-		whiptail --msgbox "$result" 16 100
-		funct_sub3
-		;;
-	"2)")
-		result="Sub3_Do2"
-		whiptail --msgbox "$result" 16 100
-		funct_sub3
-		;;
-	"3)")
-		result="Sub3_Do3"
-		whiptail --msgbox "$result" 16 100
-		funct_sub3
-		;;
-	"4)")
-		result="Sub3_Do4"
-		whiptail --msgbox "$result" 16 100
-		funct_sub3
-		;;
-	"5)")
-		result="Sub3_Do5"
-		whiptail --msgbox "$result" 16 100
-		funct_sub3
-		;;
-	"6)")
-		result="Sub3_Do6"
-		whiptail --msgbox "$result" 16 100
-		funct_sub
-		;;
-	"==") 
-		funct_sub3
-		;;
-	"b)") 
-		funct_main
-		;;
-	"q)") 
-		exit
-		;;
-esac
-}
 
 funct_main
