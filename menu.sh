@@ -47,9 +47,8 @@ case $CHOICE in
 		funct_system
 		;;
 	"2)")
-		result="Sub1_Do2"
-		whiptail --msgbox "$result" 16 100
-		funct_system
+		DOMAIN2=$(whiptail --inputbox "Domainname Server (aktuell "$DOMAIN":" 16 100 3>&1 1>&2 2>&3)
+		whiptail --msgbox "$DOMAIN2" 16 100
 		;;
 	"3)")
 		result="Sub1_Do3"
