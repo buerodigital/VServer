@@ -5,7 +5,8 @@ source ./VServer/bash/config.sh
 
 funct_main () {
 CHOICE=$(
-whiptail --title "Main Menu" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
+whiptail --title "Main Menu" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 
+\
 	"1)" "System / Docker" \
 	"2)" "Apps" \
 	"==" "============================ " \
@@ -49,7 +50,7 @@ case $CHOICE in
 		funct_system
 		;;
 	"2)")
-		DOMAIN2=$(whiptail --inputbox "Domainname Server (aktuell "$DOMAIN"):" 16 100)
+		DOMAIN2=$(whiptail --inputbox "Domainname Server (aktuell "$DOMAIN"):" 16 100 3>&1 1>&2 2>&3)
 		sed -i -e "s|$DOMAIN|$DOMAIN2|g" ./VServer/bash/config.sh
 		whiptail --msgbox "$DOMAIN2" 16 100
 		;;
