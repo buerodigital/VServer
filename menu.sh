@@ -65,11 +65,16 @@ case $CHOICE in
 		sed -i -e "s|$FTP_PASS|$FTP_PASS2|g" ./VServer/bash/config.sh
 		
 		whiptail --msgbox "$(cat ./VServer/bash/config.sh)" 16 100
+		funct_system
 		;;
 		
 	"3)")
-		result="Sub1_Do3"
-		whiptail --msgbox "$result" 16 100
+		curlftpfs $FTP_USER:$FTP_PASS@$FTP_URL /opt/VServer_backup -o nonempty
+		bak_date=$(date +'%Y_%m_%d_%H_%M')
+		mkdir /opt/VServer_backup/$bak_date
+		cp -R ./Vserver/* /opt/VServer_backup/$bak_date/
+		umount /opt/VServer_backup
+		whiptail --msgbox "Done" 16 100
 		funct_system
 		;;
 	"4)")
