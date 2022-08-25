@@ -13,13 +13,13 @@ compactbutton=,white
 
 funct_main () {
 CHOICE=$(
-whiptail --title "Tileltext" --menu "Make your choice" 16 100 9 \
+whiptail --title "Tileltext" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
         "1)" "Submenu 1"   \
         "2)" "Submenu 2"  \
         "3)" "Submenu 3" \
         "4)" "Submenu 4" \
         "5)" "Submenu 5" \
-        "6)" "Submenu 6" \
+        "6)" "Submenu 6" \\
         "q)" "quit"  3>&2 2>&1 1>&3                                                                                                                                                                                                                 
 )
                                                                                                                                                                                                                    
