@@ -5,8 +5,7 @@ source ./VServer/bash/config.sh
 
 funct_main () {
 CHOICE=$(
-whiptail --title "Main Menu" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 
-\
+whiptail --title "Main Menu" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
 	"1)" "System / Docker" \
 	"2)" "Apps" \
 	"==" "============================ " \
