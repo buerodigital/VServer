@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ./VServer/include.sh
-source ./VServer/config.sh
+source ./VServer/bash/include.sh
+source ./VServer/bash/config.sh
 
 funct_main () {
 CHOICE=$(
