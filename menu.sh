@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Arbeitsverzeichnis muss unbedingt in onfig.sh eingefügt werden (bei erster Installation Menu 1_1)
+
 source ./bash/include.sh
 source ./bash/config.sh
 
