@@ -190,7 +190,7 @@ case $CHOICE in
 		whiptail --msgbox "$result" 16 100
 		funct_sub1
 		;;
-	"b)") 
+	"==") 
 		funct_sub2_1
 		;;
 	"b)") 
@@ -248,7 +248,7 @@ case $CHOICE in
 		whiptail --msgbox "$result" 16 100
 		funct_sub
 		;;
-	"b)") 
+	"==") 
 		funct_sub3
 		;;
 	"b)") 
