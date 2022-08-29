@@ -4,7 +4,7 @@ services:
   redirect:
     image: adamkdean/redirect
     environment:
-      - VIRTUAL_HOST=DOMAIN
-      - REDIRECT_LOCATION="REDIRECT_DOMAIN"
+      - VIRTUAL_HOST=host.domain.com
+      - REDIRECT_LOCATION="redirect.domain.com"
       - REDIRECT_STATUS_CODE=301
       - PRESERVE_URL=true
