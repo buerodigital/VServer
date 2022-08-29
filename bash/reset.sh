@@ -21,12 +21,3 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -a -q)
 yes | docker system prune -a
 
-rm -R $WORKFOLDER
-mkdir $WORKFOLDER
-
-
-# Updating Firewall Rules
-clear
-echo -e "${YEL}=== Updating Firewall Rules ===${NC}"
-bash /opt/VServer/ufw_rules.sh
-echo -e "${YEL}=== Done ===${NC}"
