@@ -13,8 +13,8 @@ echo -en "${YEL}=== Installing Landingpage "$DOMAIN" ===${NC}"
 #echo -en "${GRA}=== Done ===${NC}"
 
 echo -en "\n${GRA}=== Creating YAML File for Landing Page and starting Container ===${NC}"
-sed -i -en "s|DOMAIN|$DOMAIN|g" $WORKFOLDER/01_landing/01_landing_compose.yml
-sed -i -en "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WORKFOLDER/01_landing/01_landing_compose.yml
+sed -i -en "s|DOMAIN|$DOMAIN|g" /opt/VServer/01_landing/docker-compose.yml
+sed -i -en "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" /opt/VServer/01_landing/docker-compose.yml
 docker-compose -f /opt/VServer/01_landing/docker-compose.yml up -d
 echo -en "${GRA}=== Done ===${NC}"
 
