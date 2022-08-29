@@ -1,6 +1,7 @@
 #!/bin/bash
                                                                                                                                                                                                                    
-clear                                                                                                                                                                                                              
+clear
+source /opt/VServer/bash/include.sh                                                                                                                                                                                                            
 
 echo -e "=== Installing required Software ==="
 sudo apt-get install docker docker-compose git curlftpfs ufw  
