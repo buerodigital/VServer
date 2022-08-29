@@ -10,11 +10,11 @@ services:
       - "443:443"
     volumes:
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
-      - "WORKFOLDER/00_proxy/certs:/etc/nginx/certs:ro"
-      - "WORKFOLDER/00_proxy/conf:/etc/nginx/conf.d"
-      - "WORKFOLDER/00_proxy/vhost:/etc/nginx/vhost.d"
-      - "WORKFOLDER/00_proxy/dhparam:/etc/nginx/dhparam"
-      - "WORKFOLDER/00_proxy/html:/usr/share/nginx/html"
+      - "/opt/VServer/00_proxy/certs:/etc/nginx/certs:ro"
+      - "/opt/VServer/00_proxy/conf:/etc/nginx/conf.d"
+      - "/opt/VServer/00_proxy/vhost:/etc/nginx/vhost.d"
+      - "/opt/VServer/00_proxy/dhparam:/etc/nginx/dhparam"
+      - "/opt/VServer/00_proxy/html:/usr/share/nginx/html"
     networks:
       - net_proxy
 
@@ -23,7 +23,7 @@ services:
     restart: always
     image: jrcs/letsencrypt-nginx-proxy-companion
     volumes:
-      - "WORKFOLDER/00_proxy/certs:/etc/nginx/certs"
+      - "/opt/VServer/00_proxy/certs:/etc/nginx/certs"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     volumes_from:
       - "nginx-proxy"
