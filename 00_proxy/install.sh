@@ -19,7 +19,7 @@ docker network create --driver bridge net_proxy
 echo -e "${GRA}=== Done ===${NC}"
 
 echo -e "\n${GRA}=== Creating YAML File for Proxy and starting Container ===${NC}"
-docker-compose -f $WORKFOLDER/00_proxy/00_proxy_compose.yml up -d
+docker-compose -f /opt/VServer/00_proxy/docker-compose.yml up -d
 echo -e "${GRA}=== Done ===${NC}"
 
 
