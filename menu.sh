@@ -2,8 +2,10 @@
 
 #Arbeitsverzeichnis muss unbedingt in onfig.sh eingefügt werden (bei erster Installation Menu 1_1)
 
-source ./bash/include.sh
-source ./bash/config.sh
+source /opt/VServer/bash/include.sh
+source /opt/VServer/bash/config.sh
+
+WF=/opt/VServer
 
 funct_main () {
 CHOICE=$(
@@ -52,21 +54,21 @@ case $CHOICE in
 		;;
 	"2)")
 		DOMAIN2=$(whiptail --inputbox "Domainname Server (aktuell "$DOMAIN"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$DOMAIN|$DOMAIN2|g" ./bash/config.sh
+		sed -i -e "s|$DOMAIN|$DOMAIN2|g" $WF/bash/config.sh
 		
 		LETSENCRYPTEMAIL2=$(whiptail --inputbox "email Adresse für Lets Encrypt (aktuell "$LETSENCRYPTEMAIL"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL2|g" ./bash/config.sh
+		sed -i -e "s|$LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL2|g" $WF/bash/config.sh
 		
 		FTP_URL2=$(whiptail --inputbox "ftp Server für Backup (aktuell "$FTP_URL"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$FTP_URL|$FTP_URL2|g" ./bash/config.sh
+		sed -i -e "s|$FTP_URL|$FTP_URL2|g" $WF/bash/config.sh
 		
 		FTP_USER2=$(whiptail --inputbox "FTP User (aktuell "$FTP_USER"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$FTP_USER|$FTP_USER2|g" ./bash/config.sh
+		sed -i -e "s|$FTP_USER|$FTP_USER2|g" $WF/bash/config.sh
 		
 		FTP_PASS2=$(whiptail --inputbox "FTP Passwort (aktuell "$FTP_PASS"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$FTP_PASS|$FTP_PASS2|g" ./bash/config.sh
+		sed -i -e "s|$FTP_PASS|$FTP_PASS2|g" $WF/bash/config.sh
 		
-		whiptail --msgbox "$(cat ./bash/config.sh)" 16 100
+		whiptail --msgbox "$(cat $WF/bash/config.sh)" 16 100
 		funct_system
 		;;
 		
@@ -74,7 +76,7 @@ case $CHOICE in
 		curlftpfs $FTP_USER:$FTP_PASS@$FTP_URL /opt/VServer_backup -o nonempty
 		bak_date=$(date +'%Y_%m_%d_%H_%M')
 		mkdir /opt/VServer_backup/$bak_date
-		cp -R /opt/VServer/* /opt/VServer_backup/$bak_date/
+		cp -R $WF/* /opt/VServer_backup/$bak_date/
 		umount /opt/VServer_backup
 		whiptail --msgbox "Done" 16 100
 		funct_system
