@@ -1,20 +1,21 @@
 #!/bin/bash
-                                                                                                                                                                                                                   
-clear                                                                                                                                                                                                              
 
-echo -e "=== Updating ==="
+clear
+
+echo "${YEL}=== System Update ===${NC}"
+
+echo "\n${GRA}=== Updating ===${NC}"                                                                                                                                                                                                      
 sudo apt update                                                                                                                                                                                                    
 
-echo -e "\n=== Upgrading ==="
+echo "\n${GRA}=== Upgrading ===${NC}"
 sudo apt full-upgrade -y
 
-echo -e "\n=== Cleaning ==="
+echo "\n${GRA}=== Cleaning ===${NC}"
 sudo apt autoremove -y
 sudo apt autoclean -y
 
-echo -e "\n=== Rebooting if required ==="
+echo "\n${GRA}=== Rebooting if required ===${NC}"
 [ -f /var/run/reboot-required ] && sudo reboot -f
                                                                                                                                                                                                                    
-echo -e "\n=== Done ==="
-
+echo "\n${YEL}=== Done ===${NC}\n"
 read -n1 -rp "Press any key to continue" key
