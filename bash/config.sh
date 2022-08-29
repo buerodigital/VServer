@@ -1,3 +1,6 @@
+'Arbeitsverzeichnis
+WORKFOLDER=/opt
+
 #Allgemein
 DOMAIN=test.domain.com
 LETSENCRYPTEMAIL=test@domain.com
