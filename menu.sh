@@ -107,9 +107,9 @@ esac
 }
 
 
-funct_sub2 () {
+funct_apps () {
 CHOICE=$(
-whiptail --title "Submenu 2" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
+whiptail --title "Docker Applications" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
 	"1)" "Sub 2_1" \
 	"2)" "Sub 2 Doing 2" \
 	"3)" "Sub 2 Doing 3" \
