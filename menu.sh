@@ -82,13 +82,12 @@ case $CHOICE in
 		funct_system
 		;;
 	"4)")
-		result="Sub1_Do4"
+		result="Backup wiederherrstellen - Noch nicht implementiert"
 		whiptail --msgbox "$result" 16 100
 		funct_system
 		;;
 	"5)")
-		result="Sub1_Do5"
-		whiptail --msgbox "$result" 16 100
+		bash ./bash/reset.sh
 		funct_system
 		;;
 	"6)")
