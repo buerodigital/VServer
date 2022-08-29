@@ -1,6 +1,7 @@
 #!/bin/bash
 
 clear
+source /opt/VServer/bash/include.sh
 
 echo -en "${YEL}=== Updating Firewall rules ===${NC}"
 
