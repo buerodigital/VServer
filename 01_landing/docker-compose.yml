@@ -6,7 +6,7 @@ services:
     expose:
       - "80"
     volumes:
-      - WORKFOLDER/01_landing/html:/usr/share/nginx/html
+      - /opt/VServer/01_landing/html:/usr/share/nginx/html
     environment:
       - VIRTUAL_PORT=80
       - VIRTUAL_HOST=DOMAIN
