@@ -1,7 +1,3 @@
-'Arbeitsverzeichnis
-WFISSET=0
-WF=workfolder
-
 #Allgemein
 DOMAIN=test.domain.com
 LETSENCRYPTEMAIL=test@domain.com
