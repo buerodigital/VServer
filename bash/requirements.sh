@@ -9,7 +9,7 @@ echo -e "=== Creating Backup Folder ==="
 sudo mkdir /opt/VServer_backup
 
 echo -e "=== Updating Firewall Rules ==="
-bash $WF/bash/ufw_rules.sh
+bash /opt/VServer/bash/ufw_rules.sh
                                                                                                                                                                                                                    
 echo -e "\n=== Done ==="
 
