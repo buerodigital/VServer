@@ -4,19 +4,22 @@ clear
 source /opt/VServer/bash/include.sh
 source /opt/VServer/bash/config.sh
 
-echo -en "${YEL}=== Installing Landingpage "$DOMAIN" ===${NC}"
+echo -e "${YEL}=== Installing Landingpage "$DOMAIN" ===${NC}"
 
-#echo -en "\n${GRA}=== Creating Bind-Volume Folders ===${NC}"
-#echo -en "${GRA}=== Done ===${NC}"
+#echo -e "\n${GRE}=== Creating Bind-Volume Folders ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
 
-#echo -en "\n${GRA}=== Creating Proxy Network ===${NC}"
-#echo -en "${GRA}=== Done ===${NC}"
+#echo -e "\n${GRE}=== Creating Proxy Network ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
 
-echo -en "\n${GRA}=== Creating YAML File for Landing Page and starting Container ===${NC}"
+echo -e "\n${GRE}=== Creating YAML File for Landing Page and starting Container ===${NC}"
 sed -i -e "s|DOMAIN|$DOMAIN|g" /opt/VServer/01_landing/docker-compose.yml
 sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" /opt/VServer/01_landing/docker-compose.yml
 docker-compose -f /opt/VServer/01_landing/docker-compose.yml up -d
-echo -en "${GRA}=== Done ===${NC}"
+echo -e "${GRE}=== Done ===${NC}"
 
-#echo -en "\n${GRA}=== Creating *** ===${NC}"
-#echo -en "${GRA}=== Done ===${NC}"
+#echo -e "\n${GRE}=== Creating *** ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
+
+echo -e "\n${YEL}=== Done ===${NC}\n"
+read -n1 -rp "Press any key to continue" key
