@@ -1,9 +1,12 @@
 
-# Farbedefinitionen
+# Reset
+NC='\033[0m'       # Text Reset
 
-NC='\033[31;0m'       # no colors or formatting
-RED='\033[0;31;1m'    # print text in bold red
-PUR='\033[0;35;1m'    # print text in bold purple
-YEL='\033[0;33;1m'    # print text in bold Yellow
-GRA='\033[0;37;1m'    # print text in bold Gray
-GRE='\033[1;32m'  # Green
+# Regular Colors
+RED'\033[0;31m'    # Red
+GRE='\033[0;32m'   # Green
+YEL='\033[0;33m'   # Yellow
+BLU='\033[0;34m'   # Blue
+PUR='\033[0;35m'   # Purple
+CYA='\033[0;36m'   # Cyan
+WHI='\033[0;37m'   # White
