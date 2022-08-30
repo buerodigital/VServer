@@ -18,7 +18,7 @@ case $CHOICE in
 		funct_system
 		;;
 	"2)")
-		funct_sub2
+		funct_apps
 		;;
 	"==")
 		funct_main
