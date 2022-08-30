@@ -120,7 +120,7 @@ whiptail --title "Docker Applications" --menu "Make your choice" --cancel-button
 
 case $CHOICE in
 	"1)")
-		funct_sub2_1
+		funct_proxy
 		;;
 	"2)")
 		result="Sub2_Do2"
