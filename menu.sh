@@ -1,8 +1,9 @@
 #!/bin/bash
 
-source /opt/VServer/bash/config.sh
-
 WF=/opt/VServer
+source $WF/bash/config.sh
+
+
 
 funct_main () {
 CHOICE=$(
@@ -46,26 +47,26 @@ whiptail --title "Submenu System / Docker" --menu "Make your choice" --cancel-bu
 
 case $CHOICE in
 	"1)")
-		bash ./bash/requirements.sh
+		bash ./requirements.sh
 		funct_system
 		;;
 	"2)")
 		DOMAIN2=$(whiptail --inputbox "Domainname Server (aktuell "$DOMAIN"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$DOMAIN|$DOMAIN2|g" $WF/bash/config.sh
+		sed -i -e "s|$DOMAIN|$DOMAIN2|g" $WF/config.sh
 		
 		LETSENCRYPTEMAIL2=$(whiptail --inputbox "email Adresse für Lets Encrypt (aktuell "$LETSENCRYPTEMAIL"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL2|g" $WF/bash/config.sh
+		sed -i -e "s|$LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL2|g" $WF/config.sh
 		
 		FTP_URL2=$(whiptail --inputbox "ftp Server für Backup (aktuell "$FTP_URL"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$FTP_URL|$FTP_URL2|g" $WF/bash/config.sh
+		sed -i -e "s|$FTP_URL|$FTP_URL2|g" $WF/config.sh
 		
 		FTP_USER2=$(whiptail --inputbox "FTP User (aktuell "$FTP_USER"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$FTP_USER|$FTP_USER2|g" $WF/bash/config.sh
+		sed -i -e "s|$FTP_USER|$FTP_USER2|g" $WF/config.sh
 		
 		FTP_PASS2=$(whiptail --inputbox "FTP Passwort (aktuell "$FTP_PASS"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$FTP_PASS|$FTP_PASS2|g" $WF/bash/config.sh
+		sed -i -e "s|$FTP_PASS|$FTP_PASS2|g" $WF/config.sh
 		
-		whiptail --msgbox "$(cat $WF/bash/config.sh)" 16 100
+		whiptail --msgbox "$(cat $WF/config.sh)" 16 100
 		funct_system
 		;;
 		
@@ -84,11 +85,11 @@ case $CHOICE in
 		funct_system
 		;;
 	"5)")
-		bash ./bash/reset.sh
+		bash ./reset.sh
 		funct_system
 		;;
 	"6)")
-		bash ./bash/update.sh
+		bash ./update.sh
 		funct_system
 		;;
 	"b)") 
