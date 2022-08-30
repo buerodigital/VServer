@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#Arbeitsverzeichnis muss unbedingt in onfig.sh eingefügt werden (bei erster Installation Menu 1_1)
-
-source /opt/VServer/bash/include.sh
 source /opt/VServer/bash/config.sh
 
 WF=/opt/VServer
@@ -110,7 +107,7 @@ esac
 funct_apps () {
 CHOICE=$(
 whiptail --title "Docker Applications" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
-	"1)" "Sub 2_1" \
+	"1)" "Proxy + Landing Page" \
 	"2)" "Sub 2 Doing 2" \
 	"3)" "Sub 2 Doing 3" \
 	"4)" "Sub 2 Doing 4" \
@@ -163,15 +160,13 @@ esac
 }
 
 
-funct_sub2_1 () {
+funct_proxy () {
 CHOICE=$(
 whiptail --title "Submenu 2_1" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
-	"1)" "Sub 2_1 Doing 1" \
-	"2)" "Sub 2_1 Doing 2" \
-	"3)" "Sub 2_1 Doing 3" \
-	"4)" "Sub 2_1 Doing 4" \
-	"5)" "Sub 2_1 Doing 5" \
-	"6)" "Sub 2_1 Doing 6" \
+	"1)" "Info" \
+	"2)" "Install" \
+	"3)" "Stop" \
+	"4)" "Start" \
 	"==" "============================ " \
 	"b)" "back" \
 	"q)" "quit"  3>&2 2>&1 1>&3  
@@ -184,35 +179,26 @@ case $CHOICE in
 		funct_sub1
 		;;
 	"2)")
-		result="Sub2_1_Do2"
-		whiptail --msgbox "$result" 16 100
-		funct_sub1
+		bash $WF/00_proxy/install.sh
+		bash $WF/01_landing/install.sh
+                funct_proxy ()
 		;;
 	"3)")
-		result="Sub2_1_Do3"
-		whiptail --msgbox "$result" 16 100
-		funct_sub1
+		docker-compose -f $WF/01_landing/docker-compose.yml down
+		docker-compose -f $WF/00_proxy/docker-compose.yml down		
+                funct_proxy ()
 		;;
 	"4)")
-		result="Sub2_1_Do4"
-		whiptail --msgbox "$result" 16 100
-		funct_sub1
+		docker-compose -f $WF/01_landing/docker-compose.yml up -d
+		docker-compose -f $WF/00_proxy/docker-compose.yml down		
+		funct_proxy ()
 		;;
-	"5)")
-		result="Sub2_1_Do5"
-		whiptail --msgbox "$result" 16 100
-		funct_sub1
-		;;
-	"6)")
-		result="Sub2_1_Do6"
-		whiptail --msgbox "$result" 16 100
-		funct_sub1
-		;;
+
 	"==") 
-		funct_sub2_1
+		funct_proxy ()
 		;;
 	"b)") 
-		funct_sub2
+		funct_apps
 		;;
 	"q)") 
 		exit
