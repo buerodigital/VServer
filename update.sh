@@ -1,6 +1,7 @@
 #!/bin/bash
 
 clear
+source include.sh
 
 echo -en "${YEL}=== System Update ===${NC}"
 
