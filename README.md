@@ -1,6 +1,11 @@
+## Installation
+
 Projekt im gewünschten Ordner klonen
 
-git clone https://github.com/buerodigital/VServer /opt/VServer
+    git clone https://github.com/buerodigital/VServer /opt/VServer
 
 Ins Verzeichnis wechseln und menu.sh ausführen
+
+    cd VServer
+    bash menu.sh
 
