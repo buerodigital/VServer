@@ -2,7 +2,7 @@
 
 WF="$(dirname "$(readlink -e "$0")")"
 clear
-source $WF/include.sh 
+source $WF/include.sh
 
 #nach jeder Installation bash /opt/VServer/bash/ufw_rules.sh
 #Backup über  /mnt
@@ -22,7 +22,7 @@ funct_main () {
 CHOICE=$(
 whiptail --title "Hauptmenü" --menu "Bitte auswählen" --cancel-button "Beenden" 16 100 9 \
 	"1)" "Update System und Firewallregeln " \
-	"2)" "Konfiguration bearbeiten" \	
+	"2)" "Konfiguration bearbeiten" \
 	"3)" "Proxy, Projekte und Repo löschen" \
 	"==" "============================ " \
 	"q)" "quit"  3>&2 2>&1 1>&3
@@ -32,12 +32,15 @@ case $CHOICE in
 	"1)")
 		bash $WF/update.sh
 		bash $WF/ufw_rules.sh
+		funct_main
 		;;
 	"2)")
 		nano $WF/include.sh
+		funct_main
 		;;
 	"3)")
 		bash $WF/reset.sh
+		funct_main
 		;;
 	"==")
 		funct_main
