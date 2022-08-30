@@ -1,6 +1,7 @@
 # Allgemeine Konfiguration
 DOMAIN=test.domain.com
 LETSENCRYPTEMAIL=domainmail.maildomain.com
+WORFOLDER=/opt
 
 
 # Zugangsdaten FTP Server (Backup)
