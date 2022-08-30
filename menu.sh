@@ -181,21 +181,21 @@ case $CHOICE in
 	"2)")
 		bash $WF/00_proxy/install.sh
 		bash $WF/01_landing/install.sh
-                funct_proxy ()
+                funct_proxy
 		;;
 	"3)")
 		docker-compose -f $WF/01_landing/docker-compose.yml down
 		docker-compose -f $WF/00_proxy/docker-compose.yml down		
-                funct_proxy ()
+                funct_proxy
 		;;
 	"4)")
 		docker-compose -f $WF/01_landing/docker-compose.yml up -d
 		docker-compose -f $WF/00_proxy/docker-compose.yml down		
-		funct_proxy ()
+		funct_proxy
 		;;
 
 	"==") 
-		funct_proxy ()
+		funct_proxy
 		;;
 	"b)") 
 		funct_apps
