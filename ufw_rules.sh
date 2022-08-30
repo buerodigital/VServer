@@ -1,7 +1,8 @@
 #!/bin/bash
 
+WF="$(dirname "$(readlink -e "$0")")"
 clear
-source /opt/VServer/bash/include.sh
+source $WF/include.sh 
 
 echo -e "${YEL}=== Updating Firewall rules ===${NC}"
 
