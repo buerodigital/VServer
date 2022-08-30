@@ -7,9 +7,10 @@ source $WF/include.sh
 echo -e "${RED}=== Achtung!!! Alle Daten werden gelöscht!!! ===${NC}"
 
 echo -e "\n${RED}=== Löschen bestätigen ===${NC}"                                                                                                                                                                                                      
-read -p "Bitte geben Sie "JA" ein: " VAR_CONFIRM
+read -p "Bitte geben Sie JA ein: " VAR_CONFIRM
 
-if VAR_CONFIRM = "JA" then
+if $VAR_CONFIRM = "JA" 
+then
 
 	# Docker zurücksetzen
 	docker stop $(docker ps -a -q)
@@ -19,9 +20,6 @@ if VAR_CONFIRM = "JA" then
 	
 	#Verzeichnis löschen
 	rm -R $WF
-else
-
-	echo "\n${RED}=== Löschen abgebrochen ===${NC}"
 
 fi
 
