@@ -1,9 +1,11 @@
 #!/bin/bash
 
-WF=/opt/VServer
-source $WF/bash/config.sh
+WF="$(dirname "$(readlink -e "$0")")"
+clear
+source $WF/include.sh 
 
-
+#nach jeder Installation bash /opt/VServer/bash/ufw_rules.sh
+#Backup über  /mnt
 
 funct_main () {
 CHOICE=$(
@@ -206,6 +208,8 @@ case $CHOICE in
 		;;
 esac
 }
+
+
 
 
 funct_main
