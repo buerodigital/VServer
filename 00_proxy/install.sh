@@ -24,4 +24,5 @@ echo -e "${GRE}=== Done ===${NC}"
 #echo -e "\n${GRE}=== Creating *** ===${NC}"
 #echo -e "${GRE}=== Done ===${NC}"
 
-
+echo -e "\n${YEL}=== Done ===${NC}\n"
+read -n1 -rp "Press any key to continue" key
