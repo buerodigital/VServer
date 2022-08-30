@@ -9,7 +9,7 @@ echo -e "${RED}=== Achtung!!! Alle Daten werden gelöscht!!! ===${NC}"
 echo -e "\n${RED}=== Löschen bestätigen ===${NC}"                                                                                                                                                                                                      
 read -p "Bitte geben Sie JA ein: " VAR_CONFIRM
 
-if $VAR_CONFIRM = "JA" 
+if [ $VAR_CONFIRM = "JA" ]
 then
 
 	# Docker zurücksetzen
