@@ -1,8 +1,9 @@
-#Allgemeine Konfiguration
+# Allgemeine Konfiguration
 DOMAIN=test.domain.com
 LETSENCRYPTEMAIL=domainmail.maildomain.com
 
-#Zugangsdaten FTP Server (Backup)
+
+# Zugangsdaten FTP Server (Backup)
 FTP_URL=ftp.domain.com
-FTP_USER=user
-FTP_PASS=pass
+FTP_USER=ftp_user
+FTP_PASS=ftp_pass
