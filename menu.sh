@@ -7,21 +7,37 @@ source $WF/include.sh
 #nach jeder Installation bash /opt/VServer/bash/ufw_rules.sh
 #Backup über  /mnt
 
+# 2 -> Backup machen
+# 3 -> Wiederherstellen
+# 4 -> Proxy mit Landing
+# 4.0 -> Info
+# 4.1 -> Install
+# 4.2 -> Start
+# 4.3 -> Stop
+# 4.4 -> Delete
+# 5 -> Shell
+# 6 -> Office
+
 funct_main () {
 CHOICE=$(
-whiptail --title "Main Menu" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
-	"1)" "System / Docker" \
-	"2)" "Apps" \
+whiptail --title "Hauptmenü" --menu "Bitte auswählen" --cancel-button "Beenden" 16 100 9 \
+	"1)" "Update System und Firewallregeln " \
+	"2)" "Konfiguration bearbeiten" \	
+	"3)" "Proxy, Projekte und Repo löschen" \
 	"==" "============================ " \
 	"q)" "quit"  3>&2 2>&1 1>&3
 )
 
 case $CHOICE in
 	"1)")
-		funct_system
+		bash $WF/update.sh
+		bash $WF/ufw_rules.sh
 		;;
 	"2)")
-		funct_apps
+		nano $WF/include.sh
+		;;
+	"3)")
+		bash $WF/reset.sh
 		;;
 	"==")
 		funct_main
@@ -163,7 +179,7 @@ esac
 }
 
 
-funct_proxy () {
+funct_00_proxy () {
 CHOICE=$(
 whiptail --title "Submenu 2_1" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
 	"1)" "Info" \
