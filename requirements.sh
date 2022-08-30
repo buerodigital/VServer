@@ -1,17 +1,21 @@
 #!/bin/bash
-                                                                                                                                                                                                                   
-clear
-source /opt/VServer/bash/include.sh                                                                                                                                                                                                            
 
-echo -e "=== Installing required Software ==="
+WF="$(dirname "$(readlink -e "$0")")"
+clear
+source $WF/include.sh 
+
+echo -e "${YEL}=== Setting up Docker Environment ===${NC}"
+
+echo -e "\n${GRE}=== Installing required Software ===${NC}"
 sudo apt-get install docker docker-compose git curlftpfs ufw  
 
-echo -e "=== Creating Backup Folder ==="
+echo -e "\n${GRE}=== Creating Backup Folder ===${NC}"
 sudo mkdir /opt/VServer_backup
 
-echo -e "=== Updating Firewall Rules ==="
+echo -e "\n${GRE}=== Updating Firewall Rules ===${NC}"
 bash /opt/VServer/bash/ufw_rules.sh
-                                                                                                                                                                                                                   
-echo -e "\n=== Done ==="
 
+
+echo -e "\n${YEL}=== Done ===${NC}\n"
 read -n1 -rp "Press any key to continue" key
+
