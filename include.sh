@@ -9,16 +9,16 @@ FTP_URL=ftp.domain.com
 FTP_USER=ftp_user
 FTP_PASS=ftp_pass
 
+
 #Shell in a Box
-SIABUSER=
-SIABPASSWORD=
-SIABDOMAIN=
+SIAMSUBDOMAIN=shell
+SIABUSER=guest
+SIABPASSWORD=xyz
+
 
 #OnlyOffice
-JWTSECRET=
-OFFICEDOMAIN=
-
-
+OFFICEDOMAIN=office
+JWTSECRET=omdq842kkll
 
 
 # Farben
