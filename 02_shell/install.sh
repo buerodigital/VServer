@@ -1,22 +1,27 @@
 #!/bin/bash
 
+WF="$(dirname "$(readlink -e "$0")")"
 clear
-source /opt/VServer/bash/include.sh
+source $WF/include.sh 
 
-# Installation Shell in a Box
+echo -e "${YEL}=== Installing Shell in a Box "$DOMAIN" ===${NC}"
 
-clear
-echo -e "${YEL}=== Installing Shell in a Box shell."$DOMAIN" ===${NC}"
+#echo -e "\n${GRE}=== Creating Bind-Volume Folders ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
 
-echo -e "\n${GRA}=== Creating Bind-Volume Folders ===${NC}"
-mkdir $WORKFOLDER/02_shell
-echo -e "${GRA}=== Done ===${NC}"
+#echo -e "\n${GRE}=== Creating Proxy Network ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
 
-echo -e "\n${GRA}=== Creating YAML File for Landing Page and starting Container ===${NC}"
-cp /opt/VServer/02_shell_compose.yml $WORKFOLDER/02_shell/02_shell_compose.yml
-sed -i -e "s|SIABUSER|$SIABUSER|g" $WORKFOLDER/02_shell/02_shell_compose.yml
-sed -i -e "s|SIABPASSWORD|$SIABPASSWORD|g" $WORKFOLDER/02_shell/02_shell_compose.yml
-sed -i -e "s|DOMAIN|$DOMAIN|g" $WORKFOLDER/02_shell/02_shell_compose.yml
-sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WORKFOLDER/02_shell/02_shell_compose.yml
-docker-compose -f $WORKFOLDER/02_shell/02_shell_compose.yml build
-echo -e "${GRA}=== Done ===${NC}"
+echo -e "\n${GRE}=== Creating YAML File and starting Container ===${NC}"
+sed -i -e "s|SHELL_USER|$SHELL_USER|g" $WF/02_shell/docker-compose.yml
+sed -i -e "s|SHELL_PASS|$SHELL_PASS|g" $WF/02_shell/docker-compose.yml
+sed -i -e "s|SHELL_DOMAIN|$SHELL_SUBDOMAIN"."$DOMAIN|g" $WF/02_shell/docker-compose.yml
+sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $F/02_shell/docker-compose.yml
+docker-compose -f $WF/02_shell/docker-compose.yml build
+echo -e "${GRE}=== Done ===${NC}"
+
+#echo -e "\n${GRE}=== Creating *** ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
+
+echo -e "\n${YEL}=== Done ===${NC}\n"
+read -n1 -rp "Press any key to continue" key
