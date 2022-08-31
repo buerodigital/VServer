@@ -2,7 +2,7 @@
 
 WF="$(dirname "$(readlink -e "$0")")"
 clear
-source $WF/include.sh 
+source $WF/../include.sh 
 
 echo -e "${YEL}=== Installing Shell in a Box ===${NC}"
 
