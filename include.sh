@@ -21,6 +21,10 @@ OFFICE_SUBDOMAIN=office
 OFFICE_SECRET=omdq842kkll
 
 
+
+# Nicht anpassen!!!!
+WF=
+
 # Farben
 NC='\033[0m'       # Text Reset
 RED='\033[0;31m'   # Red
