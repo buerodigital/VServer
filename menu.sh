@@ -51,7 +51,7 @@ case $CHOICE in
 		funct_00_proxy
 		;;
 	"7)")
-		#funct_02_shell
+		funct_02_shell
 		;;
 	"8)")
 		#funct_03_office
@@ -116,7 +116,7 @@ whiptail --title "Shell in a box" --menu "Bitte auswählen" --cancel-button "Bee
 
 case $CHOICE in
 	"1)")
-		whiptail --msgbox "$(cat $WF/00_proxy/README.md)" 16 100
+		whiptail --msgbox "$(cat $WF/02_shell/README.md)" 16 100
 		funct_02_shell
 		;;
 	"2)")
@@ -133,6 +133,44 @@ case $CHOICE in
 		docker-compose -f $WF/02_shell/docker-compose.yml down
 		whiptail --msgbox "Container wurden gestoppt." 16 100
         funct_02_shell
+		;;
+	"b)") 
+		funct_main
+		;;
+esac
+}
+
+
+funct_03_office () {
+CHOICE=$(
+whiptail --title "OnlyOffice for Nextcloud" --menu "Bitte auswählen" --cancel-button "Beenden" 16 100 9 \
+	"1)" "Info" \
+	"2)" "Install" \
+	"3)" "Start" \
+	"4)" "Stop" \
+	"b)" "back" \
+	3>&2 2>&1 1>&3  
+)
+
+case $CHOICE in
+	"1)")
+		whiptail --msgbox "$(cat $WF/03_office/README.md)" 16 100
+		funct_03_office
+		;;
+	"2)")
+		bash $WF/03_office/install.sh
+		whiptail --msgbox "Container wurde installiert und können jetzt gestartet werden." 16 100
+        funct_03_office
+		;;
+	"3)")
+		docker-compose -f $WF/03_office/docker-compose.yml up -d
+		whiptail --msgbox "Container wurden gestartet." 16 100
+        funct_03_office
+		;;
+	"4)")
+		docker-compose -f $WF/03_office/docker-compose.yml down
+		whiptail --msgbox "Container wurden gestoppt." 16 100
+        funct_03_office
 		;;
 	"b)") 
 		funct_main
