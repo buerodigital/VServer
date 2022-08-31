@@ -13,11 +13,11 @@ echo -e "${YEL}=== Installing Shell in a Box ===${NC}"
 #echo -e "${GRE}=== Done ===${NC}"
 
 echo -e "\n${GRE}=== Creating YAML File and starting Container ===${NC}"
-sed -i -e "s|SHELL_USER|$SHELL_USER|g" $WF/02_shell/docker-compose.yml
-sed -i -e "s|SHELL_PASS|$SHELL_PASS|g" $WF/02_shell/docker-compose.yml
-sed -i -e "s|SHELL_DOMAIN|$SHELL_SUBDOMAIN"."$DOMAIN|g" $WF/02_shell/docker-compose.yml
-sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $F/02_shell/docker-compose.yml
-docker-compose -f $WF/02_shell/docker-compose.yml build
+sed -i -e "s|SHELL_USER|$SHELL_USER|g" $WF/docker-compose.yml
+sed -i -e "s|SHELL_PASS|$SHELL_PASS|g" $WF/docker-compose.yml
+sed -i -e "s|SHELL_DOMAIN|$SHELL_SUBDOMAIN"."$DOMAIN|g" $WF/docker-compose.yml
+sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WF/docker-compose.yml
+docker-compose -f $WF/docker-compose.yml build
 echo -e "${GRE}=== Done ===${NC}"
 
 #echo -e "\n${GRE}=== Creating *** ===${NC}"
