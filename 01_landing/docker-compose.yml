@@ -6,6 +6,7 @@ services:
     expose:
       - "80"
     volumes:
+      - WORKFOLDER/conf.d:/etc/nginx/conf.d
       - WORKFOLDER/html:/usr/share/nginx/html
     environment:
       - VIRTUAL_PORT=80
