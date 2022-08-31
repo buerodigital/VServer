@@ -43,9 +43,11 @@ case $CHOICE in
 		;;
 	"4)")
 		#funct_backup
+		funct_00_proxy
 		;;
 	"5)")
 		#funct_restore
+		funct_00_proxy
 		;;
 	"6)")
 		funct_00_proxy
