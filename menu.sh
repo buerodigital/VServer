@@ -4,28 +4,27 @@ WF="$(dirname "$(readlink -e "$0")")"
 clear
 source $WF/include.sh
 
-#nach jeder Installation bash /opt/VServer/bash/ufw_rules.sh
-#Backup über  /mnt
 
-# 2 -> Backup machen
-# 3 -> Wiederherstellen
-# 4 -> Proxy mit Landing
-# 4.0 -> Info
-# 4.1 -> Install
-# 4.2 -> Start
-# 4.3 -> Stop
-# 4.4 -> Delete
-# 5 -> Shell
-# 6 -> Office
+#BAckup
+# curlftpfs $FTP_USER:$FTP_PASS@$FTP_URL /opt/VServer_backup -o nonempty
+# bak_date=$(date +'%Y_%m_%d_%H_%M')
+# mkdir /opt/VServer_backup/$bak_date
+# cp -R $WF/* /opt/VServer_backup/$bak_date/
+# umount /opt/VServer_backup
+
 
 funct_main () {
 CHOICE=$(
 whiptail --title "Hauptmenü" --menu "Bitte auswählen" --cancel-button "Beenden" 16 100 9 \
-	"1)" "Update System und Firewallregeln " \
+	"1)" "Systemupdate" \
 	"2)" "Konfiguration bearbeiten" \
 	"3)" "Proxy, Projekte und Repo löschen" \
-	"==" "============================ " \
-	"q)" "quit"  3>&2 2>&1 1>&3
+	"4)" "Daten sichern" \
+	"5)" "Daten wiederherstellen" \
+	"6)" "Proxyserver" \
+	"7)" "Shell in a Box" \
+	"8)" "Only Office für Nextcloud" \
+	3>&2 2>&1 1>&3
 )
 
 case $CHOICE in
@@ -42,141 +41,20 @@ case $CHOICE in
 		bash $WF/reset.sh
 		funct_main
 		;;
-	"==")
-		funct_main
-		;;
-	"q)") 
-		exit
-		;;
-esac
-}
-
-
-funct_system () {
-CHOICE=$(
-whiptail --title "Submenu System / Docker" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
-	"1)" "Systemvorbereitung (Docker, Docker-Compose,... installieren)" \
-	"2)" "Konfigurationsdaten für Grundinstallation bearbeiten" \
-	"3)" "Backup erstellen" \
-	"4)" "Backup einspielen" \
-	"5)" "Docker Reset (Installation zurücksetzen ohne Backup)" \
-	"6)" "System Update" \
-	"==" "============================ " \
-	"b)" "back" \
-	"q)" "quit"  3>&2 2>&1 1>&3  
-)
-
-case $CHOICE in
-	"1)")
-		bash ./requirements.sh
-		funct_system
-		;;
-	"2)")
-		DOMAIN2=$(whiptail --inputbox "Domainname Server (aktuell "$DOMAIN"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$DOMAIN|$DOMAIN2|g" $WF/config.sh
-		
-		LETSENCRYPTEMAIL2=$(whiptail --inputbox "email Adresse für Lets Encrypt (aktuell "$LETSENCRYPTEMAIL"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL2|g" $WF/config.sh
-		
-		FTP_URL2=$(whiptail --inputbox "ftp Server für Backup (aktuell "$FTP_URL"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$FTP_URL|$FTP_URL2|g" $WF/config.sh
-		
-		FTP_USER2=$(whiptail --inputbox "FTP User (aktuell "$FTP_USER"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$FTP_USER|$FTP_USER2|g" $WF/config.sh
-		
-		FTP_PASS2=$(whiptail --inputbox "FTP Passwort (aktuell "$FTP_PASS"):" 16 100 3>&1 1>&2 2>&3)
-		sed -i -e "s|$FTP_PASS|$FTP_PASS2|g" $WF/config.sh
-		
-		whiptail --msgbox "$(cat $WF/config.sh)" 16 100
-		funct_system
-		;;
-		
-	"3)")
-		curlftpfs $FTP_USER:$FTP_PASS@$FTP_URL /opt/VServer_backup -o nonempty
-		bak_date=$(date +'%Y_%m_%d_%H_%M')
-		mkdir /opt/VServer_backup/$bak_date
-		cp -R $WF/* /opt/VServer_backup/$bak_date/
-		umount /opt/VServer_backup
-		whiptail --msgbox "Done" 16 100
-		funct_system
-		;;
 	"4)")
-		result="Backup wiederherrstellen - Noch nicht implementiert"
-		whiptail --msgbox "$result" 16 100
-		funct_system
+		#funct_backup
 		;;
 	"5)")
-		bash ./reset.sh
-		funct_system
+		#funct_restore
 		;;
 	"6)")
-		bash ./update.sh
-		funct_system
+		funct_00_proxy
 		;;
-	"b)") 
-		funct_main
+	"7)")
+		#funct_02_shell
 		;;
-	"==") 
-		funct_system
-		;;
-	"q)") 
-		exit
-		;;
-esac
-}
-
-
-funct_apps () {
-CHOICE=$(
-whiptail --title "Docker Applications" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
-	"1)" "Proxy + Landing Page" \
-	"2)" "Sub 2 Doing 2" \
-	"3)" "Sub 2 Doing 3" \
-	"4)" "Sub 2 Doing 4" \
-	"5)" "Sub 2 Doing 5" \
-	"6)" "Sub 2 Doing 6" \
-	"==" "============================ " \
-	"b)" "back" \
-	"q)" "quit"  3>&2 2>&1 1>&3  
-)
-
-case $CHOICE in
-	"1)")
-		funct_proxy
-		;;
-	"2)")
-		result="Sub2_Do2"
-		whiptail --msgbox "$result" 16 100
-		funct_sub1
-		;;
-	"3)")
-		result="Sub2_Do3"
-		whiptail --msgbox "$result" 16 100
-		funct_sub1
-		;;
-	"4)")
-		result="Sub2_Do4"
-		whiptail --msgbox "$result" 16 100
-		funct_sub1
-		;;
-	"5)")
-		result="Sub2_Do5"
-		whiptail --msgbox "$result" 16 100
-		funct_sub1
-		;;
-	"6)")
-		result="Sub2_Do6"
-		whiptail --msgbox "$result" 16 100
-		funct_sub1
-		;;
-	"==") 
-		funct_sub2
-		;;
-	"b)") 
-		funct_main
-		;;
-	"q)") 
-		exit
+	"8)")
+		#funct_03_office
 		;;
 esac
 }
@@ -184,49 +62,84 @@ esac
 
 funct_00_proxy () {
 CHOICE=$(
-whiptail --title "Submenu 2_1" --menu "Make your choice" --cancel-button "Beenden" 16 100 9 \
+whiptail --title "Proxyserver und Landingpage" --menu "Bitte auswählen" --cancel-button "Beenden" 16 100 9 \
 	"1)" "Info" \
 	"2)" "Install" \
-	"3)" "Stop" \
-	"4)" "Start" \
-	"==" "============================ " \
+	"3)" "Start" \
+	"4)" "Stop" \
 	"b)" "back" \
-	"q)" "quit"  3>&2 2>&1 1>&3  
+	3>&2 2>&1 1>&3  
 )
 
 case $CHOICE in
 	"1)")
-		result="Sub2_1_Do1"
-		whiptail --msgbox "$result" 16 100
-		funct_sub1
+		whiptail --msgbox "$(cat $WF/00_proxy/README.md)" 16 100
+		whiptail --msgbox "$(cat $WF/01_landing/README.md)" 16 100
+		funct_00_proxy
 		;;
 	"2)")
 		bash $WF/00_proxy/install.sh
 		bash $WF/01_landing/install.sh
-                funct_proxy
+		whiptail --msgbox "Container wurde installiert und können jetzt gestartet werden." 16 100
+		
+        funct_00_proxy
 		;;
 	"3)")
-		docker-compose -f $WF/01_landing/docker-compose.yml down
-		docker-compose -f $WF/00_proxy/docker-compose.yml down		
-                funct_proxy
+		docker-compose -f $WF/01_landing/docker-compose.yml up -d
+		docker-compose -f $WF/00_proxy/docker-compose.yml up -d
+		whiptail --msgbox "Container wurden gestartet." 16 100
+        funct_00_proxy
 		;;
 	"4)")
-		docker-compose -f $WF/01_landing/docker-compose.yml up -d
-		docker-compose -f $WF/00_proxy/docker-compose.yml down		
-		funct_proxy
-		;;
-
-	"==") 
-		funct_proxy
+		docker-compose -f $WF/01_landing/docker-compose.yml down
+		docker-compose -f $WF/00_proxy/docker-compose.yml down
+		whiptail --msgbox "Container wurden gestoppt." 16 100
+        funct_00_proxy
 		;;
 	"b)") 
-		funct_apps
-		;;
-	"q)") 
-		exit
+		funct_main
 		;;
 esac
 }
+
+
+funct_02_shell () {
+CHOICE=$(
+whiptail --title "Shell in a box" --menu "Bitte auswählen" --cancel-button "Beenden" 16 100 9 \
+	"1)" "Info" \
+	"2)" "Install" \
+	"3)" "Start" \
+	"4)" "Stop" \
+	"b)" "back" \
+	3>&2 2>&1 1>&3  
+)
+
+case $CHOICE in
+	"1)")
+		whiptail --msgbox "$(cat $WF/00_proxy/README.md)" 16 100
+		funct_02_shell
+		;;
+	"2)")
+		bash $WF/02_shell/install.sh
+		whiptail --msgbox "Container wurde installiert und können jetzt gestartet werden." 16 100
+        funct_02_shell
+		;;
+	"3)")
+		docker-compose -f $WF/02_shell/docker-compose.yml up -d
+		whiptail --msgbox "Container wurden gestartet." 16 100
+        funct_02_shell
+		;;
+	"4)")
+		docker-compose -f $WF/02_shell/docker-compose.yml down
+		whiptail --msgbox "Container wurden gestoppt." 16 100
+        funct_02_shell
+		;;
+	"b)") 
+		funct_main
+		;;
+esac
+}
+
 
 
 
