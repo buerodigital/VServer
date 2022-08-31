@@ -7,7 +7,6 @@ source $WF/../include.sh
 echo -e "${YEL}=== Installing Landingpage "$DOMAIN" ===${NC}"
 
 #echo -e "\n${GRE}=== Creating Bind-Volume Folders ===${NC}"
-mkdir $WF/html
 #echo -e "${GRE}=== Done ===${NC}"
 
 #echo -e "\n${GRE}=== Creating Proxy Network ===${NC}"
