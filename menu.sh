@@ -82,7 +82,7 @@ case $CHOICE in
 	"2)")
 		bash $WF/00_proxy/install.sh
 		bash $WF/01_landing/install.sh
-		whiptail --msgbox "Container wurde installiert und können jetzt gestartet werden." 16 100
+		whiptail --msgbox "Container wurden installiert und gestartet." 16 100
 		
         funct_00_proxy
 		;;
@@ -123,7 +123,7 @@ case $CHOICE in
 		;;
 	"2)")
 		bash $WF/02_shell/install.sh
-		whiptail --msgbox "Container wurde installiert und können jetzt gestartet werden." 16 100
+		whiptail --msgbox "Container wurde installiert und gestartet" 16 100
         funct_02_shell
 		;;
 	"3)")
@@ -161,7 +161,7 @@ case $CHOICE in
 		;;
 	"2)")
 		bash $WF/03_office/install.sh
-		whiptail --msgbox "Container wurde installiert und können jetzt gestartet werden." 16 100
+		whiptail --msgbox "Container wurde installiert und gestartet." 16 100
         funct_03_office
 		;;
 	"3)")
