@@ -28,11 +28,11 @@ services:
     restart: always
     stop_grace_period: 60s
     volumes:
-       - "WORKFOLDER/03_office/data:/var/www/onlyoffice/Data"
-       - "WORKFOLDER/03_office/log:/var/log/onlyoffice"
-       - "WORKFOLDER/03_office/cache_files:/var/lib/onlyoffice/documentserver/App_Data/cache/files"
-       - "WORKFOLDER/03_office/public_files:/var/www/onlyoffice/documentserver-example/public/files"
-       - "WORKFOLDER/03_office/fonts:/usr/share/fonts"
+       - "WORKFOLDER/data:/var/www/onlyoffice/Data"
+       - "WORKFOLDER/log:/var/log/onlyoffice"
+       - "WORKFOLDER/cache_files:/var/lib/onlyoffice/documentserver/App_Data/cache/files"
+       - "WORKFOLDER/public_files:/var/www/onlyoffice/documentserver-example/public/files"
+       - "WORKFOLDER/fonts:/usr/share/fonts"
     networks:
       - net_proxy
       - back_office
@@ -57,7 +57,7 @@ services:
     expose:
       - '5432'
     volumes:
-      - WORKFOLDER/03_office/postgresql_data:/var/lib/postgresql
+      - WORKFOLDER/postgresql_data:/var/lib/postgresql
     networks:
       - back_office
 
