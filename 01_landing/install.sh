@@ -15,7 +15,7 @@ echo -e "${YEL}=== Installing Landingpage "$DOMAIN" ===${NC}"
 echo -e "\n${GRE}=== Creating YAML File for Landing Page and starting Container ===${NC}"
 sed -i -e "s|DOMAIN|$DOMAIN|g" /opt/VServer/01_landing/docker-compose.yml
 sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" /opt/VServer/01_landing/docker-compose.yml
-docker-compose -f /opt/VServer/01_landing/docker-compose.yml up -d
+docker-compose -f /opt/VServer/01_landing/docker-compose.yml build
 echo -e "${GRE}=== Done ===${NC}"
 
 #echo -e "\n${GRE}=== Creating *** ===${NC}"
