@@ -9,6 +9,14 @@ FTP_URL=ftp.domain.com
 FTP_USER=ftp_user
 FTP_PASS=ftp_pass
 
+#Shell in a Box
+SIABUSER=
+SIABPASSWORD=
+SIABDOMAIN=
+
+#OnlyOffice
+JWTSECRET=
+OFFICEDOMAIN=
 
 
 
