@@ -23,7 +23,7 @@ sed -i -e "s|WORKFOLDER|$WF|g" $WF/docker-compose.yml
 sed -i -e "s|OFFICE_DOMAIN|$OFFICE_SUBDOMAIN"."$DOMAIN|g" $WF/docker-compose.yml
 sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WF/docker-compose.yml
 sed -i -e "s|JWTSECRET|$JWTSECRET|g" $WF/docker-compose.yml
-docker-compose -f $WF/docker-compose.yml build
+#docker-compose -f $WF/docker-compose.yml build
 echo -e "${GRE}=== Done ===${NC}"
 
 #echo -e "\n${GRE}=== Creating *** ===${NC}"
