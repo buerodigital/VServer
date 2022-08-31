@@ -1,29 +1,33 @@
 #!/bin/bash
 
-source include.sh
-
-# Installation Onlyoffice
-
+WF="$(dirname "$(readlink -e "$0")")"
 clear
-echo -e "${YEL}=== Installing Onlyoffice office."$DOMAIN" ===${NC}"
+source $WF/../include.sh 
 
-echo -e "\n${GRA}=== Creating Bind-Volume Folders ===${NC}"
-mkdir $WORKFOLDER/03_office
-mkdir $WORKFOLDER/03_office/data
-mkdir $WORKFOLDER/03_office/log
-mkdir $WORKFOLDER/03_office/cache
-mkdir $WORKFOLDER/03_office/public_files
-mkdir $WORKFOLDER/03_office/fonts
-mkdir $WORKFOLDER/03_office/postgresql_data
-echo -e "${GRA}=== Done ===${NC}"
+echo -e "${YEL}=== Installing Onlyoffice ===${NC}"
 
+echo -e "\n${GRE}=== Creating Bind-Volume Folders ===${NC}"
+mkdir $WF/data
+mkdir $WF/log
+mkdir $WF/cache
+mkdir $WF/public_files
+mkdir $WF/fonts
+mkdir $WF/postgresql_data
+echo -e "${GRE}=== Done ===${NC}"
 
-echo -e "\n${GRA}=== Creating YAML File for Landing Page and starting Container ===${NC}"
-cp /opt/VServer/03_office_compose.yml $WORKFOLDER/03_office/03_office_compose.yml
-sed -i -e "s|WORKFOLDER|$WORKFOLDER|g" $WORKFOLDER/03_office/03_office_compose.yml
-sed -i -e "s|DOMAIN|$DOMAIN|g" $WORKFOLDER/03_office/03_office_compose.yml
-sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WORKFOLDER/03_office/03_office_compose.yml
-sed -i -e "s|JWTSECRET|$JWTSECRET|g" $WORKFOLDER/03_office/03_office_compose.yml
-sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WORKFOLDER/03_office/03_office_compose.yml
-docker-compose -f $WORKFOLDER/03_office/03_office_compose.yml up -d
-echo -e "${GRA}=== Done ===${NC}"
+#echo -e "\n${GRE}=== Creating Proxy Network ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
+
+echo -e "\n${GRE}=== Creating YAML File for Landing Page and starting Container ===${NC}"
+sed -i -e "s|WORKFOLDER|$WF|g" $WF/docker-compose.yml
+sed -i -e "s|OFFICE_DOMAIN|$OFFICE_SUBDOMAIN"."$DOMAIN|g" $WF/docker-compose.yml
+sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WF/docker-compose.yml
+sed -i -e "s|JWTSECRET|$JWTSECRET|g" $WF/docker-compose.yml
+docker-compose -f $WF/docker-compose.yml build
+echo -e "${GRE}=== Done ===${NC}"
+
+#echo -e "\n${GRE}=== Creating *** ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
+
+echo -e "\n${YEL}=== Done ===${NC}\n"
+read -n1 -rp "Press any key to continue" key
