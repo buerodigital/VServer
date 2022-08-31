@@ -11,14 +11,14 @@ FTP_PASS=ftp_pass
 
 
 #Shell in a Box
-SIAMSUBDOMAIN=shell
-SIABUSER=guest
-SIABPASSWORD=xyz
+SIAB_SUBDOMAIN=shell
+SIAB_USER=siabuser
+SIAB_PASS=siabpass
 
 
 #OnlyOffice
-OFFICEDOMAIN=office
-JWTSECRET=omdq842kkll
+OFFICE_SUBDOMAIN=office
+OFFICE_SECRET=omdq842kkll
 
 
 # Farben
