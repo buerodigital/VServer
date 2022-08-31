@@ -19,8 +19,8 @@ services:
       #- JWT_HEADER=Authorization
       #- JWT_IN_BODY=true
       - VIRTUAL_PORT=80
-      - VIRTUAL_HOST=office.DOMAIN
-      - LETSENCRYPT_HOST=office.DOMAIN
+      - VIRTUAL_HOST=OFFICE_SUBDOMAIN
+      - LETSENCRYPT_HOST=OFFICE_SUBDOMAIN
       - LETSENCRYPT_EMAIL=LETSENCRYPTEMAIL
     expose:
       - '80'
