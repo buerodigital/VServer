@@ -23,7 +23,7 @@ OFFICE_SECRET=omdq842kkll
 
 
 # Nicht anpassen!!!!
-WF=
+#WF=
 
 # Farben
 NC='\033[0m'       # Text Reset
