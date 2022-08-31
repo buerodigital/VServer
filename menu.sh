@@ -54,7 +54,7 @@ case $CHOICE in
 		funct_02_shell
 		;;
 	"8)")
-		#funct_03_office
+		funct_03_office
 		;;
 esac
 }
