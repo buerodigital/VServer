@@ -12,8 +12,8 @@ FTP_PASS=ftp_pass
 
 #Shell in a Box
 SIAB_SUBDOMAIN=shell
-SIAB_USER=siabuser
-SIAB_PASS=siabpass
+SIAB_USER=siab_user
+SIAB_PASS=siab_pass
 
 
 #OnlyOffice
