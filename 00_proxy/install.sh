@@ -19,6 +19,7 @@ docker network create --driver bridge net_proxy
 echo -e "${GRE}=== Done ===${NC}"
 
 echo -e "\n${GRE}=== Creating YAML File and starting Container ===${NC}"
+sed -i -e "s|WORKFOLDER|$WF|g" $WF/00_proxy/docker-compose.yml
 docker-compose -f $WF/docker-compose.yml build
 echo -e "${GRE}=== Done ===${NC}"
 
