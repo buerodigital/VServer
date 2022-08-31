@@ -2,7 +2,6 @@
 
 clear
 source /opt/VServer/bash/include.sh
-source /opt/VServer/bash/config.sh
 
 echo -e "${YEL}=== Installing Landingpage "$DOMAIN" ===${NC}"
 
