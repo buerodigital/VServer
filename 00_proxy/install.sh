@@ -20,7 +20,7 @@ echo -e "${GRE}=== Done ===${NC}"
 
 echo -e "\n${GRE}=== Creating YAML File and starting Container ===${NC}"
 sed -i -e "s|WORKFOLDER|$WF|g" $WF/docker-compose.yml
-docker-compose -f $WF/docker-compose.yml build
+#docker-compose -f $WF/docker-compose.yml build
 echo -e "${GRE}=== Done ===${NC}"
 
 #echo -e "\n${GRE}=== Creating *** ===${NC}"
