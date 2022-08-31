@@ -8,12 +8,12 @@ services:
     expose:
       - "4200"
     environment:
-      - SIAB_PASSWORD=SIABPASSWORD
-      - SIAB_USER=SIABUSER
+      - SIAB_PASSWORD=SHELL_PASS
+      - SIAB_USER=SHELL_USER
       - SIAB_SSL=false
       - VIRTUAL_PORT=4200
-      - VIRTUAL_HOST=shell.DOMAIN
-      - LETSENCRYPT_HOST=shell.DOMAIN
+      - VIRTUAL_HOST=SHELL_DOMAIN
+      - LETSENCRYPT_HOST=SHELL_DOMAIN
       - LETSENCRYPT_EMAIL=LETSENCRYPTEMAIL
     networks:
       - net_proxy
