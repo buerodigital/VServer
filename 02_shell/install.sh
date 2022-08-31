@@ -1,7 +1,7 @@
-
 #!/bin/bash
 
-source include.sh
+clear
+source /opt/VServer/bash/include.sh
 
 # Installation Shell in a Box
 
