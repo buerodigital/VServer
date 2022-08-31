@@ -18,5 +18,5 @@ sed -i -e "s|SIABUSER|$SIABUSER|g" $WORKFOLDER/02_shell/02_shell_compose.yml
 sed -i -e "s|SIABPASSWORD|$SIABPASSWORD|g" $WORKFOLDER/02_shell/02_shell_compose.yml
 sed -i -e "s|DOMAIN|$DOMAIN|g" $WORKFOLDER/02_shell/02_shell_compose.yml
 sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WORKFOLDER/02_shell/02_shell_compose.yml
-docker-compose -f $WORKFOLDER/02_shell/02_shell_compose.yml up -d
+docker-compose -f $WORKFOLDER/02_shell/02_shell_compose.yml build
 echo -e "${GRA}=== Done ===${NC}"
