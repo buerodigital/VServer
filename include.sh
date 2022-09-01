@@ -11,6 +11,7 @@ FTP_PASS=ftp_pass
 
 
 # Landingpage
+REDIRECT_ACTIVE=1
 REDIRECT_URL=www.google.de
 
 
