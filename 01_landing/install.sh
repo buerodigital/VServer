@@ -17,10 +17,15 @@ echo -e "\n${GRE}=== Creating YAML File for Landing Page and starting Container 
 sed -i -e "s|WORKFOLDER|$WF|g" $WF/docker-compose.yml
 sed -i -e "s|DOMAIN|$DOMAIN|g" $WF/docker-compose.yml
 sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WF/docker-compose.yml
+sed -i -e "s|REDIRECT_URL|$REDIRECT_URL|g" $WF/conf.d/default.conf
 docker-compose -f $WF/docker-compose.yml up -d
 echo -e "${GRE}=== Done ===${NC}"
 
-#echo -e "\n${GRE}=== Creating *** ===${NC}"
+#echo -e "\n${GRE}=== Creating Redirect ===${NC}"
+  if [$REDIRECT_ACTIVE=1]
+  then
+    sed -i -e "s|#REDIRECT_ACTIVE|      |g" $WF/docker-compose.yml
+  enif
 #echo -e "${GRE}=== Done ===${NC}"
 
 echo -e "\n${YEL}=== Done ===${NC}\n"
