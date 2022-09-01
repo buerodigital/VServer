@@ -22,7 +22,7 @@ echo -e "\n${GRE}=== Creating YAML File for Landing Page and starting Container 
 sed -i -e "s|WORKFOLDER|$WF|g" $WF/docker-compose.yml
 sed -i -e "s|OFFICE_DOMAIN|$OFFICE_SUBDOMAIN"."$DOMAIN|g" $WF/docker-compose.yml
 sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WF/docker-compose.yml
-sed -i -e "s|JWTSECRET|$JWTSECRET|g" $WF/docker-compose.yml
+sed -i -e "s|OFFICE_SECRET|$JWTSECRET|g" $WF/docker-compose.yml
 docker-compose -f $WF/docker-compose.yml up -d
 echo -e "${GRE}=== Done ===${NC}"
 
