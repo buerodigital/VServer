@@ -11,7 +11,7 @@ FTP_PASS=ftp_pass
 
 
 # Landingpage
-REDIRECT=www.google.de
+REDIRECT_URL=www.google.de
 
 
 #Shell in a Box
