@@ -7,8 +7,13 @@ source $WF/../include.sh
 echo -e "${YEL}=== Installing Landingpage "$DOMAIN" ===${NC}"
 
 #echo -e "\n${GRE}=== Creating Bind-Volume Folders ===${NC}"
-#mkdir $WF/conf.d
 #echo -e "${GRE}=== Done ===${NC}"
+
+echo -e "\n${GRE}=== Creating Redirect ===${NC}"
+  if [ "$REDIRECT_ACTIVE" = "1" ]; then
+    sed -i -e "s|#REDIRECT_ACTIVE|      |g" $WF/docker-compose.yml
+  fi
+echo -e "${GRE}=== Done ===${NC}"
 
 #echo -e "\n${GRE}=== Creating Proxy Network ===${NC}"
 #echo -e "${GRE}=== Done ===${NC}"
