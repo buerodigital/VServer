@@ -10,6 +10,10 @@ FTP_USER=ftp_user
 FTP_PASS=ftp_pass
 
 
+# Landingpage
+REDIRECT=www.google.de
+
+
 #Shell in a Box
 SHELL_SUBDOMAIN=shell
 SHELL_USER=siab_user
