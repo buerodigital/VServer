@@ -22,7 +22,7 @@ docker-compose -f $WF/docker-compose.yml up -d
 echo -e "${GRE}=== Done ===${NC}"
 
 #echo -e "\n${GRE}=== Creating Redirect ===${NC}"
-  if [$REDIRECT_ACTIVE=1]; then
+  if [ "$REDIRECT_ACTIVE" = "1" ]; then
     sed -i -e "s|#REDIRECT_ACTIVE|      |g" $WF/docker-compose.yml
   fi
 #echo -e "${GRE}=== Done ===${NC}"
