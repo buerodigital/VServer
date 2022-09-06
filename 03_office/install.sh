@@ -6,6 +6,10 @@ source $WF/../include.sh
 
 echo -e "${YEL}=== Installing Onlyoffice ===${NC}"
 
+echo -e "\n${GRE}=== Creating Random Keys ===${NC}"
+sed -i -e "s|$OFFICE_SECRET|$(openssl rand -hex 32)|g" $WF/../include.sh
+echo -e "${GRE}=== Done ===${NC}"
+
 echo -e "\n${GRE}=== Creating Bind-Volume Folders ===${NC}"
 mkdir $WF/data
 mkdir $WF/log
