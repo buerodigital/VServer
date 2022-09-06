@@ -6,6 +6,9 @@ source $WF/../include.sh
 
 echo -e "${YEL}=== Installing NGINX-Proxy "$DOMAIN" ===${NC}"
 
+#echo -e "\n${GRE}=== Creating Random Keys ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
+
 echo -e "\n${GRE}=== Creating Bind-Volume Folders ===${NC}"
 mkdir $WF/certs
 mkdir $WF/conf
