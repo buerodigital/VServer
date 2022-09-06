@@ -1,65 +1,62 @@
 #!/bin/bash
 
-source include.sh
-
-TEST="$(openssl rand -hex 32)"
-$TEST >> ./04_coturn_keys.txt
-
+WF="$(dirname "$(readlink -e "$0")")"
 clear
-echo -e "${YEL}=== Generating Keys for Nextcloud Signaling Server ===${NC}"
+source $WF/include.sh 
+
+echo -e "${YEL}=== Installing Nextcloud High Performance Signaling Server ===${NC}"
+
+echo -e "\n${GRE}=== Creating Keys for High Performance Signaling Server ===${NC}"
+sed -i -e "s|$SIGNALING_STATIC_SECRET|$(openssl rand -hex 32)|g" $WF/../include.sh
+sed -i -e "s|$SIGNALING_HASHKEY|$(openssl rand -base64 16)|g" $WF/../include.sh
+sed -i -e "s|$SIGNALING_BLOCKKEY|$(openssl rand -base64 16)|g" $WF/../include.sh
+sed -i -e "s|$NEXTCLOUD_SHARED_SECRET|$(openssl rand -hex 16)|g" $WF/../include.sh
+sed -i -e "s|$NEXTCLOUD_API_KEY|$(openssl rand -base64 16)|g" $WF/../include.sh
+echo -e "${GRE}=== Done ===${NC}"
+
+echo -e "\n${GRE}=== Creating Bind-Volume Folders ===${NC}"
+mkdir $WF/data
+mkdir $WF/log
+mkdir $WF/cache
+mkdir $WF/public_files
+mkdir $WF/fonts
+mkdir $WF/postgresql_data
+echo -e "${GRE}=== Done ===${NC}"
+
+#echo -e "\n${GRE}=== Creating Proxy Network ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
 
 
-#create a random hex key (STATIC_SECRET) for your nextcloud talk app and signaling server
-echo -e "\n${GRA}=== Creating a random hex key (STATIC_SECRET) for your nextcloud talk app and signaling server ===${NC}"
-echo -e "#STATIC_SECRET " >> ./04_coturn_keys.txt
-STATIC_SECRET="$(openssl rand -hex 32)" 
-echo "$STATIC_SECRET" >> ./04_coturn_keys.txt
-echo -e "\n" >> ./04_coturn_keys.txt
-sleep 1
-echo -e "${GRA}=== Done ===${NC}"
+
+echo -e "\n${GRE}=== Creating YAML File for Landing Page and starting Container ===${NC}"
+sed -i -e "s|WORKFOLDER|$WF|g" $WF/docker-compose.yml
+sed -i -e "s|OFFICE_DOMAIN|$OFFICE_SUBDOMAIN"."$DOMAIN|g" $WF/docker-compose.yml
+sed -i -e "s|LETSENCRYPTEMAIL|$LETSENCRYPTEMAIL|g" $WF/docker-compose.yml
+sed -i -e "s|OFFICE_SECRET|$JWTSECRET|g" $WF/docker-compose.yml
+docker-compose -f $WF/docker-compose.yml up -d
+echo -e "${GRE}=== Done ===${NC}"
 
 
-#and a hashkey
-echo -e "\n${GRA}=== #and a hashkey ===${NC}"
-echo -e "#HASHKEY " >> ./04_coturn_keys.txt
-HASHKEY="$(openssl rand -base64 16)" 
-echo "$HASHKEY" >> ./04_coturn_keys.txt
-echo -e "\n" >> ./04_coturn_keys.txt
-sleep 1
-echo -e "${GRA}=== Done ===${NC}"
+
+#echo -e "\n${GRE}=== Creating *** ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
+
+echo -e "\n${YEL}=== Done ===${NC}\n"
+read -n1 -rp "Press any key to continue" key
 
 
-#and a blockkey
-echo -e "\n${GRA}=== #and a blockkey ===${NC}"
-echo -e "#BLOCKKEY " >> ./04_coturn_keys.txt
-BLOCKKEY="$(openssl rand -base64 16)" 
-echo $BLOCKKEY >> ./04_coturn_keys.txt
-echo -e "\n" >> ./04_coturn_keys.txt
-sleep 1
-echo -e "${GRA}=== Done ===${NC}"
 
 
-#and a Nextcloud SHARED_SECRET for Signaling
-echo -e "\n${GRA}=== #and a Nextcloud SHARED_SECRET for Signaling ===${NC}"
-echo -e "#SHARED_SECRET " >> ./04_coturn_keys.txt
-SHARED_SECRET="$(openssl rand -hex 16)" 
-echo $SHARED_SECRET >> ./04_coturn_keys.txt
-echo -e "\n" >> ./04_coturn_keys.txt
-sleep 1
-echo -e "${GRA}=== Done ===${NC}"
 
 
-#and an API-KEY
-echo -e "\n${GRA}=== #and an API-KEY ===${NC}"
-echo -e "#API_KEY " >> ./04_coturn_keys.txt
-API_KEY="$(openssl rand -base64 16)" 
-echo $API_KEY >> ./04_coturn_keys.txt
-echo -e "\n" >> ./04_coturn_keys.txt
-sleep 1
-echo -e "${GRA}=== Done ===${NC}"
 
 
-# Installation Proxy
+
+
+
+
+
+
 clear
 echo -e "${YEL}=== Installing Nextcloud Talk High Performance Backend coturn."$DOMAIN" ===${NC}"
 
