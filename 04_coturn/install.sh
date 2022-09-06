@@ -6,7 +6,7 @@ source $WF/include.sh
 
 echo -e "${YEL}=== Installing Nextcloud High Performance Signaling Server "$COTURN_SUBDOMAIN"."$DOMAIN"===${NC}"
 
-echo -e "\n${GRE}=== Creating Keys for High Performance Signaling Server ===${NC}"
+echo -e "\n${GRE}=== Creating Random Keys ===${NC}"
 sed -i -e "s|$SIGNALING_STATIC_SECRET|$(openssl rand -hex 32)|g" $WF/../include.sh
 sed -i -e "s|$SIGNALING_HASHKEY|$(openssl rand -base64 16)|g" $WF/../include.sh
 sed -i -e "s|$SIGNALING_BLOCKKEY|$(openssl rand -base64 16)|g" $WF/../include.sh
