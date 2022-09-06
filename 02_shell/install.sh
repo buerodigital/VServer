@@ -4,7 +4,7 @@ WF="$(dirname "$(readlink -e "$0")")"
 clear
 source $WF/../include.sh 
 
-echo -e "${YEL}=== Installing Shell in a Box ===${NC}"
+echo -e "${YEL}=== Installing Shell in a Box "$SHELL_SUBDOMAIN"."$DOMAIN"===${NC}"
 
 #echo -e "\n${GRE}=== Creating Random Keys ===${NC}"
 #echo -e "${GRE}=== Done ===${NC}"
