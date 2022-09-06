@@ -2,7 +2,7 @@
 
 WF="$(dirname "$(readlink -e "$0")")"
 clear
-source $WF/include.sh 
+source $WF/../include.sh 
 
 echo -e "${YEL}=== Installing Nextcloud High Performance Signaling Server "$COTURN_SUBDOMAIN"."$DOMAIN"===${NC}"
 
@@ -14,14 +14,12 @@ sed -i -e "s|$NEXTCLOUD_SHARED_SECRET|$(openssl rand -hex 16)|g" $WF/../include.
 sed -i -e "s|$NEXTCLOUD_API_KEY|$(openssl rand -base64 16)|g" $WF/../include.sh
 echo -e "${GRE}=== Done ===${NC}"
 
-echo -e "\n${GRE}=== Creating Bind-Volume Folders ===${NC}"
-mkdir $WF/data
-mkdir $WF/log
-mkdir $WF/cache
-mkdir $WF/public_files
-mkdir $WF/fonts
-mkdir $WF/postgresql_data
+echo -e "\n${GRE}=== Cloning Git Repository ===${NC}"
+git clone https://github.com/strukturag/nextcloud-spreed-signaling $WF && cd nextcloud-spreed-signaling
 echo -e "${GRE}=== Done ===${NC}"
+
+#echo -e "\n${GRE}=== Creating Bind-Volume Folders ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
 
 #echo -e "\n${GRE}=== Creating Proxy Network ===${NC}"
 #echo -e "${GRE}=== Done ===${NC}"
@@ -46,7 +44,7 @@ read -n1 -rp "Press any key to continue" key
 
 
 
-
+git clone https://github.com/strukturag/nextcloud-spreed-signaling
 
 
 
