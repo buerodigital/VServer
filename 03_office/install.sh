@@ -4,7 +4,7 @@ WF="$(dirname "$(readlink -e "$0")")"
 clear
 source $WF/../include.sh 
 
-echo -e "${YEL}=== Installing Onlyoffice ===${NC}"
+echo -e "${YEL}=== Installing Onlyoffice "$OFFICE_SUBDOMAIN"."$DOMAIN"===${NC}"
 
 echo -e "\n${GRE}=== Creating Random Keys ===${NC}"
 sed -i -e "s|$OFFICE_SECRET|$(openssl rand -hex 32)|g" $WF/../include.sh
