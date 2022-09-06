@@ -21,19 +21,27 @@ SHELL_USER=siab_user
 SHELL_PASS=siab_pass
 
 
-#OnlyOffice
+# OnlyOffice
 OFFICE_SUBDOMAIN=office
+
+
+# High Performance Signaling Server / Coturn
+COTURN_SUBDOMAIN=coturn
+
+
+
+
+# Please do not edit anything below!!!!
+
+# Keys - OnlyOffice
 OFFICE_SECRET=office11111
 
-
-#High Performance Signaling Server / Coturn
-COTURN_SUBDOMAIN=coturn
+# Keys - High Performance Signaling Server / Coturn
 SIGNALING_STATIC_SECRET=signaling11111
 SIGNALING_HASHKEY=signaling22222
 SIGNALING_BLOCKKEY=signaling33333
 NEXTCLOUD_SHARED_SECRET=signaling44444
 NEXTCLOUD_API_KEY=signaling55555
-
 
 # Farben
 NC='\033[0m'       # Text Reset
