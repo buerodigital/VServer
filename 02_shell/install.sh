@@ -6,6 +6,9 @@ source $WF/../include.sh
 
 echo -e "${YEL}=== Installing Shell in a Box ===${NC}"
 
+#echo -e "\n${GRE}=== Creating Random Keys ===${NC}"
+#echo -e "${GRE}=== Done ===${NC}"
+
 #echo -e "\n${GRE}=== Creating Bind-Volume Folders ===${NC}"
 #echo -e "${GRE}=== Done ===${NC}"
 
