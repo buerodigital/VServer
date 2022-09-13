@@ -27,7 +27,7 @@ OFFICE_SUBDOMAIN=office
 
 # High Performance Signaling Server / Coturn
 COTURN_SUBDOMAIN=coturn
-
+COTURN_BACKEND1=https://nextcloud.example.com
 
 
 
@@ -40,7 +40,7 @@ OFFICE_SECRET="office11111"
 SIGNALING_STATIC_SECRET="signaling11111"
 SIGNALING_HASHKEY="signaling22222"
 SIGNALING_BLOCKKEY="signaling33333"
-NEXTCLOUD_SHARED_SECRET="signaling44444"
+NEXTCLOUD_SHARED_SECRET1="signaling44444"
 NEXTCLOUD_API_KEY="signaling55555"
 
 # Farben
