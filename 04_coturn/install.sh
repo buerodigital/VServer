@@ -10,7 +10,7 @@ echo -e "\n${GRE}=== Creating Random Keys ===${NC}"
 sed -i -e "s|$SIGNALING_STATIC_SECRET|$(openssl rand -hex 32)|g" $WF/../include.sh
 sed -i -e "s|$SIGNALING_HASHKEY|$(openssl rand -base64 16)|g" $WF/../include.sh
 sed -i -e "s|$SIGNALING_BLOCKKEY|$(openssl rand -base64 16)|g" $WF/../include.sh
-sed -i -e "s|$NEXTCLOUD_SHARED_SECRET|$(openssl rand -hex 16)|g" $WF/../include.sh
+sed -i -e "s|$NEXTCLOUD_SHARED_SECRET1|$(openssl rand -hex 16)|g" $WF/../include.sh
 sed -i -e "s|$NEXTCLOUD_API_KEY|$(openssl rand -base64 16)|g" $WF/../include.sh
 echo -e "${GRE}=== Done ===${NC}"
 
