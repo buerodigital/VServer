@@ -28,6 +28,9 @@ echo -e "${GRE}=== Done ===${NC}"
 
 echo -e "\n${GRE}=== Creating YAML File for Landing Page and starting Container ===${NC}"
 sed -i -e "s|WORKFOLDER|$WF|g" $WF/docker-compose.yml
+sed -i -e "s|COTURN_DOMAIN|$COTURN_SUBDOMAIN"."$DOMAIN|g" $WF/docker-compose.yml
+sed -i -e "s|SIGNALING_STATIC_SECRET|$SIGNALING_STATIC_SECRET|g" $WF/docker-compose.yml
+
 
 
 echo -e "${GRE}=== Done ===${NC}"
@@ -42,27 +45,8 @@ read -n1 -rp "Press any key to continue" key
 
 
 
-git clone https://github.com/strukturag/nextcloud-spreed-signaling
 
 
 
 
-
-
-
-
-
-
-clear
-echo -e "${YEL}=== Installing Nextcloud Talk High Performance Backend coturn."$DOMAIN" ===${NC}"
-
-
-echo -e "\n${GRA}=== Clonig Github-Repository ===${NC}"
-mkdir $WORKFOLDER/04_coturn
-cd $WORKFOLDER/04_coturn
-git clone https://github.com/strukturag/nextcloud-spreed-signaling
-
-
-echo -e "\n${GRA}=== Creating Bind-Volume Folders ===${NC}"
-mkdir $WORKFOLDER/00_proxy
 
