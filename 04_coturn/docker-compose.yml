@@ -22,7 +22,7 @@ services:
   nats:
     image: nats:2.2.1
     volumes:
-      - "WORKFOLDER/gnatsd.conf:/config/gnatsd.conf"
+      - "WORKFOLDER/nextcloud-spreed-signaling/gnatsd.conf:/config/gnatsd.conf"
     command: ["-c", "/config/gnatsd.conf"]
     networks:
       - net_proxy
