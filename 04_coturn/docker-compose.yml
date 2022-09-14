@@ -2,30 +2,32 @@ version: '3'
 
 services:
   spreedbackend:
-    build: .
+    build:
+      context: WORKFOLDER/nextcloud-spreed-signaling/docker/server/
+      dockerfile: WORKFOLDER/nextcloud-spreed-signaling/docker/server/Dockerfile
     volumes:
-      - "WORKFOLDER/config/server.conf:/config/server.conf"
+      - "WORKFOLDER/server.conf:/config/server.conf"
     networks:
       - net_proxy
       - signal
 #    network_mode: host
     restart: unless-stopped
-    expose:
-      - '80'
+#    expose:
+#      - '80'
     depends_on:
       - nats
       - janus
       - coturn
       
   nats:
-    image: nats:2.1
+    image: nats:2.2.1
     volumes:
-      - "WORKFOLDER/config/gnatsd.conf:/config/gnatsd.conf"
+      - "WORKFOLDER/gnatsd.conf:/config/gnatsd.conf"
     command: ["-c", "/config/gnatsd.conf"]
     networks:
       - net_proxy
       - signal
-#    network_mode: host
+    network_mode: host
     restart: unless-stopped
     
   janus:
@@ -42,10 +44,10 @@ services:
     networks:
       - net_proxy
       - signal
-#    network_mode: host
+ #   network_mode: host
     environment:
-      REALM: signaling.example.com
-      STATIC_SECRET: openssl rand -hex 32
+      REALM: COTURN_DOMAIN
+      STATIC_SECRET: SIGNALING_STATIC_SECRET
     restart: unless-stopped
 
 networks:                                                                                                                                                                                                          
